@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>علوم الطبيعة والحياة – الأستاذ عبد العزيز إسماعيل</title>
+<style>
+:root{color-scheme:light;box-sizing:border-box}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%}
+body{color:#1f2937;font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;line-height:1.7;background:#052e2b;background-image:radial-gradient(circle at 15% 10%,#0f766e 0,transparent 45%),radial-gradient(circle at 90% 35%,#7c3aed 0,transparent 40%),radial-gradient(circle at 20% 90%,#f97316 0,transparent 42%);background-attachment:fixed;overflow-x:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.hide{display:none!important}
+.w{max-width:640px;margin:0 auto;padding:14px}
+/* hero */
+.hero{text-align:center;color:#fff;padding:14px 0 6px;position:relative}
+.orb{display:flex;justify-content:center;gap:14px;font-size:2rem;margin-bottom:4px}
+.orb span{animation:fl 3s ease-in-out infinite}
+.orb span:nth-child(2){animation-delay:.4s}.orb span:nth-child(3){animation-delay:.8s}.orb span:nth-child(4){animation-delay:1.2s}
+.hero h1{margin:2px 0;font-size:1.55rem;text-shadow:0 3px 12px rgba(0,0,0,.45)}
+.hero p{margin:0;font-size:.88rem;opacity:.93}
+.hint{color:#fff;text-align:center;font-weight:700;margin:12px 0 10px;opacity:.95}
+/* year cards */
+.yc{display:block;width:100%;border:0;padding:0;text-align:right;border-radius:26px;overflow:hidden;margin-bottom:16px;cursor:pointer;color:#fff;font:inherit;box-shadow:0 12px 28px rgba(0,0,0,.4),0 6px 0 rgba(0,0,0,.28);position:relative}
+.yc:active{transform:translateY(4px)}
+.ill{height:132px;position:relative;overflow:hidden}
+.ill svg{width:100%;height:100%;display:block}
+.yb{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(0,0,0,.22)}
+.yb b{font-size:1.2rem}.yb small{display:block;opacity:.92;font-size:.82rem;line-height:1.3}
+.go{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800}
+.badge{position:absolute;top:10px;left:10px;background:#fde047;color:#7c2d12;border-radius:12px;padding:1px 10px;font-weight:800;font-size:.78rem;z-index:2;animation:pl 1.4s ease-in-out infinite alternate}
+/* year page */
+.top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.bk{border:0;border-radius:14px;background:rgba(255,255,255,.22);color:#fff;font:inherit;font-weight:800;padding:8px 16px;cursor:pointer}
+.yh{border-radius:26px;overflow:hidden;color:#fff;margin-bottom:16px;box-shadow:0 12px 28px rgba(0,0,0,.4)}
+.yh .ill{height:170px}
+.yh h2{margin:0;padding:10px 16px;background:rgba(0,0,0,.25);font-size:1.25rem}
+.act{display:flex;align-items:center;gap:14px;width:100%;text-align:right;border:0;border-radius:22px;padding:14px;margin-bottom:14px;background:#fff;color:#1f2937;font:inherit;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.3),0 5px 0 rgba(0,0,0,.18)}
+.act:active{transform:translateY(3px)}
+.act .e{flex:0 0 62px;height:62px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#fff}
+.act b{display:block;font-size:1.08rem;color:#064e3b}.act small{display:block;color:#4b5563;font-size:.84rem;line-height:1.5}
+.act .st{margin-right:auto;background:#fde047;color:#7c2d12;border-radius:12px;padding:2px 10px;font-weight:800;font-size:.8rem;flex:0 0 auto}
+.soon{border:3px dashed rgba(255,255,255,.5);border-radius:22px;padding:16px;text-align:center;color:#fff;font-weight:700;opacity:.9}
+.foot{text-align:center;color:#fff;font-size:.8rem;opacity:.9;padding:8px 0 22px}
+/* overlay */
+#ov{position:fixed;inset:0;z-index:50;background:#fff;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+#bar{flex:0 0 48px;display:flex;align-items:center;gap:10px;padding:0 10px;background:#064e3b;color:#fff;font-weight:800}
+#bk2{border:0;border-radius:12px;background:rgba(255,255,255,.2);color:#fff;font:inherit;font-weight:800;padding:6px 14px;cursor:pointer}
+#fr{flex:1;width:100%;border:0;background:#fff}
+/* animations */
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes pl{from{opacity:.6;transform:scale(.96)}to{opacity:1;transform:scale(1.04)}}
+@keyframes bub{0%{transform:translateY(0);opacity:.9}100%{transform:translateY(-34px);opacity:0}}
+@keyframes ring{0%{transform:scale(.2);opacity:.9}100%{transform:scale(1.8);opacity:0}}
+@keyframes shk{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+@keyframes dsh{to{stroke-dashoffset:-30}}
+@keyframes twk{0%,100%{opacity:.2}50%{opacity:1}}
+@keyframes swy{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.f1{animation:fl 3s ease-in-out infinite}.f2{animation:fl 3.6s ease-in-out .5s infinite}.f3{animation:fl 2.8s ease-in-out 1s infinite}
+.bu{animation:bub 2.2s ease-in infinite}.bu2{animation:bub 2.2s ease-in .7s infinite}.bu3{animation:bub 2.2s ease-in 1.4s infinite}
+.rg{transform-origin:center;transform-box:fill-box;animation:ring 2.4s ease-out infinite}.rg2{animation-delay:.8s}.rg3{animation-delay:1.6s}
+.sk{transform-origin:50% 100%;transform-box:fill-box;animation:shk .45s ease-in-out infinite}
+.wv{stroke-dasharray:8 5;animation:dsh 1.2s linear infinite}
+.tw{animation:twk 2s ease-in-out infinite}.tw2{animation-delay:.7s}.tw3{animation-delay:1.3s}
+.sw{transform-origin:50% 100%;transform-box:fill-box;animation:swy 4s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+<div id="home" class="w">
+  <div class="hero">
+    <div class="orb"><span>🧪</span><span>🌿</span><span>🌋</span><span>🔬</span></div>
+    <h1>علوم الطبيعة والحياة</h1>
+    <p>إعداد الأستاذ: عبد العزيز إسماعيل<br>متوسطة القلم إمرو الخاصة – غرداية</p>
+  </div>
+  <div class="hint">اختر سنتك الدراسية 👇</div>
+  <div id="years"></div>
+  <div class="foot">لكل كويز محاولة واحدة، ونتيجتك تصل إلى الأستاذ تلقائياً.<br>الإنترنت مطلوب لفتح المحتوى وإرسال النتيجة، والتحديثات تصلك تلقائياً.</div>
+</div>
+
+<div id="yr" class="w hide">
+  <div class="top"><button class="bk" id="bk1">↩ رجوع</button></div>
+  <div class="yh" id="yh"></div>
+  <div id="acts"></div>
+</div>
+
+<div id="ov" class="hide">
+  <div id="bar"><button id="bk2">↩ رجوع</button><span id="ttl"></span></div>
+  <iframe id="fr" title="المحتوى" src="about:blank"></iframe>
+</div>
+
+<script>
+/* ======== الصور (رسومات SVG مرتبطة بالمنهاج) ======== */
+function svg(b){return '<svg viewBox="0 0 300 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+b+'</svg>'}
+var ILL={
+ 1:svg('<g opacity=".25" fill="#fff"><circle cx="30" cy="30" r="22"/><circle cx="270" cy="115" r="30"/><circle cx="262" cy="20" r="12"/></g>'+
+  '<polygon points="130,26 170,26 170,62 208,128 92,128 130,62" fill="rgba(255,255,255,.28)" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>'+
+  '<polygon points="112,92 188,92 208,128 92,128" fill="#34d399"/>'+
+  '<g fill="#fff"><circle class="bu" cx="140" cy="108" r="5"/><circle class="bu2" cx="160" cy="112" r="4"/><circle class="bu3" cx="150" cy="104" r="3.5"/></g>'+
+  '<rect x="124" y="20" width="52" height="8" rx="4" fill="#fff"/>'+
+  '<g font-size="34" text-anchor="middle"><text class="f1" x="46" y="62">🍎</text><text class="f2" x="252" y="58">🥛</text><text class="f3" x="52" y="118">🥦</text><text class="f1" x="250" y="118">🍞</text><text class="f2" x="228" y="34" font-size="26">🧀</text></g>'),
+ 2:svg('<circle cx="262" cy="30" r="17" fill="#fde047"/><g stroke="#fde047" stroke-width="3" opacity=".7"><path d="M262 4v8M262 48v8M236 30h8M280 30h8"/></g>'+
+  '<path d="M0 140 Q70 78 150 106 T300 92 V140Z" fill="#047857"/><path d="M0 140 Q90 108 170 124 T300 116 V140Z" fill="#065f46"/>'+
+  '<ellipse cx="150" cy="122" rx="52" ry="11" fill="#38bdf8"/><ellipse cx="136" cy="120" rx="14" ry="3" fill="#bae6fd" opacity=".7"/>'+
+  '<g class="sw" fill="#064e3b"><polygon points="30,104 46,64 62,104"/><polygon points="40,104 54,74 68,104"/><rect x="44" y="104" width="4" height="12"/></g>'+
+  '<g class="sw" fill="#14532d"><polygon points="236,98 252,56 268,98"/><rect x="250" y="98" width="4" height="14"/></g>'+
+  '<g font-size="30" text-anchor="middle"><text class="f2" x="126" y="128">🐸</text><text class="f1" x="206" y="52">🦋</text><text class="f3" x="82" y="48">🐦</text><text class="f1" x="188" y="110" font-size="26">🐇</text><text class="f2" x="150" y="62" font-size="24">🌿</text></g>'),
+ 3:svg('<g class="wv" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><polyline points="0,32 40,32 52,32 58,10 66,54 74,16 82,48 92,28 104,32 150,32 160,32 166,12 174,50 182,20 192,44 204,32 250,32 262,32 268,14 276,48 284,26 300,32"/></g>'+
+  '<rect y="88" width="300" height="52" fill="#78350f"/><rect y="88" width="300" height="9" fill="#65a30d"/>'+
+  '<polyline points="150,97 142,108 156,118 146,130 154,140" fill="none" stroke="#1c0a02" stroke-width="3.5" stroke-linejoin="round"/>'+
+  '<g fill="none" stroke="#fde047" stroke-width="2.5"><circle class="rg" cx="150" cy="122" r="36"/><circle class="rg rg2" cx="150" cy="122" r="36"/><circle class="rg rg3" cx="150" cy="122" r="36"/></g>'+
+  '<circle cx="150" cy="122" r="7" fill="#ef4444" stroke="#fff" stroke-width="2"/>'+
+  '<g class="sk"><rect x="214" y="52" width="30" height="36" fill="#fef3c7"/><polygon points="210,52 229,36 248,52" fill="#b91c1c"/><g fill="#38bdf8"><rect x="219" y="60" width="7" height="7"/><rect x="232" y="60" width="7" height="7"/><rect x="219" y="73" width="7" height="7"/><rect x="232" y="73" width="7" height="7"/></g></g>'+
+  '<g class="sk" style="animation-delay:.2s"><rect x="58" y="62" width="24" height="26" fill="#bfdbfe"/><polygon points="55,62 70,48 85,62" fill="#7c2d12"/></g>'),
+ 4:svg('<g fill="#fff"><circle class="tw" cx="30" cy="24" r="2.5"/><circle class="tw tw2" cx="90" cy="14" r="2"/><circle class="tw tw3" cx="250" cy="28" r="3"/><circle class="tw tw2" cx="200" cy="12" r="2"/><circle class="tw" cx="274" cy="92" r="2.5"/><circle class="tw tw3" cx="24" cy="104" r="2"/></g>'+
+  '<g opacity=".25" fill="#fff"><circle cx="150" cy="70" r="52"/><circle cx="150" cy="70" r="34"/></g>'+
+  '<g font-size="58" text-anchor="middle"><text class="f1" x="150" y="94">🔬</text></g>'+
+  '<g font-size="30" text-anchor="middle"><text class="f2" x="62" y="62">🧬</text><text class="f3" x="244" y="64">⚛️</text><text class="f1" x="70" y="116">🌱</text><text class="f2" x="236" y="118">🧫</text></g>')
+};
+/* ======== السنوات والأنشطة (أضف الأنشطة الجديدة هنا) ======== */
+var YEARS=[
+ {n:"السنة الأولى متوسط",c:"#0ea5e9,#0d9488",ill:1,acts:[
+   {t:"مخبر العالم الصغير",d:"لعبة تعليمية: تصنيف الأغذية والكواشف، أغذية الطاقة والبناء",u:"https://smailsnv.github.io/Kid_lab_game_1m/",e:"🧪",c:"#0ea5e9,#0d9488",tag:"لعبة"}]},
+ {n:"السنة الثانية متوسط",c:"#16a34a,#65a30d",ill:2,acts:[
+   {t:"الوسط الحي",d:"مراجعة شاملة بالبطاقات المتحركة + كويز من 20 مع +1 في التقويم",u:"wasat.html",e:"🌿",c:"#16a34a,#65a30d",tag:"كويز"}]},
+ {n:"السنة الثالثة متوسط",c:"#f97316,#dc2626",ill:3,acts:[
+   {t:"الزلازل: مظاهرها وخصائصها",d:"مراجعة بالبطاقات المتحركة + كويز بشهادة تحفيزية",u:"zalzal.html",e:"🌋",c:"#f97316,#dc2626",tag:"كويز"}]},
+ {n:"السنة الرابعة متوسط",c:"#7c3aed,#4f46e5",ill:4,acts:[]}
+];
+/* ======== التنقل ======== */
+var $=function(i){return document.getElementById(i)};
+var lvl=0,open_=false;
+function showV(v){$("home").classList.toggle("hide",v!==0);$("yr").classList.toggle("hide",v!==1);window.scrollTo(0,0)}
+function buildHome(){
+  var h=$("years");h.innerHTML="";
+  YEARS.forEach(function(y,i){
+    var b=document.createElement("button");b.className="yc";
+    var cnt=y.acts.length?(y.acts.length+(y.acts.length===1?" نشاط":" أنشطة")):"قريباً";
+    b.innerHTML='<div class="ill" style="background:linear-gradient(135deg,'+y.c+')">'+(y.acts.length?"":'<span class="badge">قريباً</span>')+ILL[y.ill]+'</div><div class="yb" style="background:linear-gradient(135deg,'+y.c+')"><span><b></b><small></small></span><span class="go">‹</span></div>';
+    b.querySelector("b").textContent=y.n;b.querySelector("small").textContent=cnt;
+    b.onclick=function(){openYear(i)};
+    h.appendChild(b);
+  });
+}
+function openYear(i){
+  var y=YEARS[i];
+  $("yh").innerHTML='<div class="ill" style="background:linear-gradient(135deg,'+y.c+')">'+ILL[y.ill]+'</div><h2 style="background:linear-gradient(135deg,'+y.c+')"></h2>';
+  $("yh").querySelector("h2").textContent=y.n;
+  var a=$("acts");a.innerHTML="";
+  y.acts.forEach(function(x){
+    var b=document.createElement("button");b.className="act";
+    b.innerHTML='<span class="e" style="background:linear-gradient(135deg,'+x.c+')"></span><span><b></b><small></small></span><span class="st"></span>';
+    b.querySelector(".e").textContent=x.e;b.querySelector("b").textContent=x.t;b.querySelector("small").textContent=x.d;b.querySelector(".st").textContent=x.tag||"";
+    b.onclick=function(){openAct(x.u,x.e+" "+x.t)};
+    a.appendChild(b);
+  });
+  var s=document.createElement("div");s.className="soon";
+  s.textContent=y.acts.length?"✨ أنشطة أخرى ستُضاف هنا قريباً":"🚀 المحتوى قيد الإعداد وسيظهر هنا قريباً بإذن الله";
+  a.appendChild(s);
+  showV(1);lvl=1;try{history.pushState({l:1},"")}catch(e){}
+}
+function openAct(u,t){
+  $("fr").src=u;$("ttl").textContent=t;$("ov").classList.remove("hide");open_=true;lvl=2;
+  try{history.pushState({l:2},"")}catch(e){}
+}
+function closeAct(){open_=false;$("ov").classList.add("hide");$("fr").src="about:blank"}
+function stepBack(){
+  if(lvl===2){closeAct();lvl=1}else if(lvl===1){showV(0);lvl=0}
+}
+function goBack(){
+  var before=lvl;
+  try{history.back()}catch(e){}
+  setTimeout(function(){if(lvl===before)stepBack()},250);
+}
+window.addEventListener("popstate",stepBack);
+$("bk1").onclick=goBack;$("bk2").onclick=goBack;
+buildHome();
+</script>
+</body>
+</html>
