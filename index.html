@@ -3,177 +3,405 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>علوم الطبيعة والحياة – الأستاذ عبد العزيز إسماعيل</title>
+<title>كويز الزلازل – علوم الطبيعة والحياة 3 متوسط</title>
 <style>
-:root{color-scheme:light;box-sizing:border-box}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%}
-body{color:#1f2937;font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;line-height:1.7;background:#052e2b;background-image:radial-gradient(circle at 15% 10%,#0f766e 0,transparent 45%),radial-gradient(circle at 90% 35%,#7c3aed 0,transparent 40%),radial-gradient(circle at 20% 90%,#f97316 0,transparent 42%);background-attachment:fixed;overflow-x:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-.hide{display:none!important}
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#1f2937;font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;line-height:1.7;background:linear-gradient(160deg,#1e1b4b 0%,#6d28d9 55%,#f97316 120%);background-attachment:fixed;overflow-x:hidden}
 .w{max-width:640px;margin:0 auto;padding:14px}
-/* hero */
-.hero{text-align:center;color:#fff;padding:14px 0 6px;position:relative}
-.orb{display:flex;justify-content:center;gap:14px;font-size:2rem;margin-bottom:4px}
-.orb span{animation:fl 3s ease-in-out infinite}
-.orb span:nth-child(2){animation-delay:.4s}.orb span:nth-child(3){animation-delay:.8s}.orb span:nth-child(4){animation-delay:1.2s}
-.hero h1{margin:2px 0;font-size:1.55rem;text-shadow:0 3px 12px rgba(0,0,0,.45)}
-.hero p{margin:0;font-size:.88rem;opacity:.93}
-.hint{color:#fff;text-align:center;font-weight:700;margin:12px 0 10px;opacity:.95}
-/* year cards */
-.yc{display:block;width:100%;border:0;padding:0;text-align:right;border-radius:26px;overflow:hidden;margin-bottom:16px;cursor:pointer;color:#fff;font:inherit;box-shadow:0 12px 28px rgba(0,0,0,.4),0 6px 0 rgba(0,0,0,.28);position:relative}
-.yc:active{transform:translateY(4px)}
-.ill{height:132px;position:relative;overflow:hidden}
-.ill svg{width:100%;height:100%;display:block}
-.yb{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(0,0,0,.22)}
-.yb b{font-size:1.2rem}.yb small{display:block;opacity:.92;font-size:.82rem;line-height:1.3}
-.go{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800}
-.badge{position:absolute;top:10px;left:10px;background:#fde047;color:#7c2d12;border-radius:12px;padding:1px 10px;font-weight:800;font-size:.78rem;z-index:2;animation:pl 1.4s ease-in-out infinite alternate}
-/* year page */
-.top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.bk{border:0;border-radius:14px;background:rgba(255,255,255,.22);color:#fff;font:inherit;font-weight:800;padding:8px 16px;cursor:pointer}
-.yh{border-radius:26px;overflow:hidden;color:#fff;margin-bottom:16px;box-shadow:0 12px 28px rgba(0,0,0,.4)}
-.yh .ill{height:170px}
-.yh h2{margin:0;padding:10px 16px;background:rgba(0,0,0,.25);font-size:1.25rem}
-.act{display:flex;align-items:center;gap:14px;width:100%;text-align:right;border:0;border-radius:22px;padding:14px;margin-bottom:14px;background:#fff;color:#1f2937;font:inherit;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.3),0 5px 0 rgba(0,0,0,.18)}
-.act:active{transform:translateY(3px)}
-.act .e{flex:0 0 62px;height:62px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#fff}
-.act b{display:block;font-size:1.08rem;color:#064e3b}.act small{display:block;color:#4b5563;font-size:.84rem;line-height:1.5}
-.act .st{margin-right:auto;background:#fde047;color:#7c2d12;border-radius:12px;padding:2px 10px;font-weight:800;font-size:.8rem;flex:0 0 auto}
-.soon{border:3px dashed rgba(255,255,255,.5);border-radius:22px;padding:16px;text-align:center;color:#fff;font-weight:700;opacity:.9}
-.foot{text-align:center;color:#fff;font-size:.8rem;opacity:.9;padding:8px 0 22px}
-/* overlay */
-#ov{position:fixed;inset:0;z-index:50;background:#fff;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
-#bar{flex:0 0 48px;display:flex;align-items:center;gap:10px;padding:0 10px;background:#064e3b;color:#fff;font-weight:800}
-#bk2{border:0;border-radius:12px;background:rgba(255,255,255,.2);color:#fff;font:inherit;font-weight:800;padding:6px 14px;cursor:pointer}
-#fr{flex:1;width:100%;border:0;background:#fff}
-/* animations */
-@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@keyframes pl{from{opacity:.6;transform:scale(.96)}to{opacity:1;transform:scale(1.04)}}
-@keyframes bub{0%{transform:translateY(0);opacity:.9}100%{transform:translateY(-34px);opacity:0}}
-@keyframes ring{0%{transform:scale(.2);opacity:.9}100%{transform:scale(1.8);opacity:0}}
-@keyframes shk{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
-@keyframes dsh{to{stroke-dashoffset:-30}}
-@keyframes twk{0%,100%{opacity:.2}50%{opacity:1}}
-@keyframes swy{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
-.f1{animation:fl 3s ease-in-out infinite}.f2{animation:fl 3.6s ease-in-out .5s infinite}.f3{animation:fl 2.8s ease-in-out 1s infinite}
-.bu{animation:bub 2.2s ease-in infinite}.bu2{animation:bub 2.2s ease-in .7s infinite}.bu3{animation:bub 2.2s ease-in 1.4s infinite}
-.rg{transform-origin:center;transform-box:fill-box;animation:ring 2.4s ease-out infinite}.rg2{animation-delay:.8s}.rg3{animation-delay:1.6s}
-.sk{transform-origin:50% 100%;transform-box:fill-box;animation:shk .45s ease-in-out infinite}
-.wv{stroke-dasharray:8 5;animation:dsh 1.2s linear infinite}
-.tw{animation:twk 2s ease-in-out infinite}.tw2{animation-delay:.7s}.tw3{animation-delay:1.3s}
-.sw{transform-origin:50% 100%;transform-box:fill-box;animation:swy 4s ease-in-out infinite}
+.hero{text-align:center;color:#fff;padding:6px 0 10px}
+.hero h1{margin:4px 0;font-size:1.45rem;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+.hero p{margin:0;font-size:.88rem;opacity:.9}
+.card{background:#fff;border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.hide{display:none}#wa,#ml,#cp,#cpm{display:none!important}
+label{font-weight:700;color:#4c1d95}
+input,select{width:100%;padding:13px;border:2px solid #ddd6fe;border-radius:14px;font:inherit;background:#faf5ff;color:#1f2937;margin:6px 0 12px}
+input:focus{outline:none;border-color:#7c3aed}
+.go{display:block;width:100%;padding:14px;border:0;border-radius:16px;font:inherit;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#f97316,#ef4444);box-shadow:0 5px 0 #b91c1c;cursor:pointer;text-align:center;text-decoration:none;margin-top:12px}
+.go:active{transform:translateY(3px);box-shadow:0 2px 0 #b91c1c}
+.go:disabled{opacity:.45}
+.go.b{background:linear-gradient(90deg,#7c3aed,#4f46e5);box-shadow:0 5px 0 #3730a3}
+.go.g{background:linear-gradient(90deg,#16a34a,#0d9488);box-shadow:0 5px 0 #166534}
+.err{color:#dc2626;font-size:.9rem;min-height:1.3em}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:700;color:#4c1d95;margin-bottom:8px}
+.bar{height:12px;background:#ede9fe;border-radius:12px;overflow:hidden;margin-bottom:12px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f97316,#facc15);border-radius:12px;transition:width .4s}
+.qt{font-size:1.1rem;font-weight:800;margin:6px 0 10px;color:#1e1b4b}
+.opt{display:flex;align-items:center;gap:10px;width:100%;text-align:right;padding:12px;margin:9px 0;border:2px solid #e5e7eb;border-radius:16px;background:#f9fafb;color:#1f2937;font:inherit;font-weight:600;cursor:pointer;box-shadow:0 3px 0 #d1d5db}
+.opt .l{flex:0 0 34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+.opt:nth-child(1) .l{background:#ef4444}.opt:nth-child(2) .l{background:#3b82f6}.opt:nth-child(3) .l{background:#f59e0b}.opt:nth-child(4) .l{background:#10b981}
+.opt.ok{background:#dcfce7;border-color:#16a34a;color:#14532d;box-shadow:0 3px 0 #16a34a}
+.opt.no{background:#fee2e2;border-color:#dc2626;color:#7f1d1d;box-shadow:0 3px 0 #dc2626}
+.opt:disabled{cursor:default}
+.fb{border-radius:14px;padding:10px 12px;margin-top:8px;font-weight:600;font-size:.93rem}
+.fb.ok{background:#dcfce7;color:#14532d}.fb.no{background:#fee2e2;color:#7f1d1d}
+.shake{animation:sh .5s}
+@keyframes sh{0%,100%{transform:translateX(0)}15%{transform:translateX(-9px) rotate(-1deg)}30%{transform:translateX(9px) rotate(1deg)}45%{transform:translateX(-7px)}60%{transform:translateX(7px)}80%{transform:translateX(-3px)}}
+.pop{animation:pp .45s}
+@keyframes pp{0%{transform:scale(.96)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+.wave{stroke-dasharray:6 4;animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-20}}
+.ring{transform-origin:center;transform-box:fill-box;animation:rg 2.2s ease-out infinite;opacity:0}
+.ring:nth-of-type(2){animation-delay:.7s}.ring:nth-of-type(3){animation-delay:1.4s}
+@keyframes rg{0%{transform:scale(.2);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.bld{transform-origin:50% 100%;transform-box:fill-box;animation:bs .5s ease-in-out infinite alternate}
+@keyframes bs{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
+.score{font-size:2.8rem;font-weight:900;text-align:center;background:linear-gradient(90deg,#f97316,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.3}
+.stars{text-align:center;font-size:1.8rem;letter-spacing:4px}
+.rv{border-radius:14px;padding:10px 12px;margin:8px 0;font-size:.92rem}
+.rv.ok{background:#dcfce7;color:#14532d}.rv.no{background:#fee2e2;color:#7f1d1d}
+.rv span{color:#4b5563}
+.cf{position:fixed;top:-30px;font-size:1.5rem;pointer-events:none;animation:fall 3s linear forwards;z-index:9}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.tm{position:relative;height:22px;background:#fee2e2;border-radius:12px;overflow:hidden;margin-bottom:10px}
+.tm i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#22c55e,#facc15);transition:width .25s linear,background .3s}
+.tm.lo i{background:linear-gradient(90deg,#ef4444,#f97316)}
+.tm b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#1f2937}
+.snb{position:fixed;top:calc(env(safe-area-inset-top,0px) + 8px);left:8px;z-index:20;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:1.2rem;cursor:pointer}
+.qimg{text-align:center;margin:6px 0}.qimg svg{max-width:100%;height:auto;border-radius:12px}
+.lbr{display:flex;align-items:center;gap:8px;padding:8px 10px;margin:6px 0;border-radius:12px;background:#f5f3ff;color:#1f2937;font-weight:600}
+.lbr span:nth-child(2){flex:1}.lbr em{font-style:normal;color:#7c3aed;font-weight:800}
+.fc{perspective:800px;height:196px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fi{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.fc.f .fi{transform:rotateY(180deg)}
+.ff,.fk{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.ff{color:#fff;font-weight:800;gap:6px;animation:fl 3s ease-in-out infinite}
+.ff svg{width:62px;height:62px}
+.ff small{font-weight:600;opacity:.9;font-size:.72rem}
+.fk{transform:rotateY(180deg);background:#fff;color:#1f2937;border:3px solid #ddd6fe;font-size:.84rem;font-weight:600;line-height:1.55;overflow:auto}
+.fk b{color:#7c3aed;display:block;margin-bottom:4px;font-size:.95rem}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.cmp{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:8px}
+.cmp th{background:#7c3aed;color:#fff;padding:8px}.cmp td{padding:8px;border-bottom:1px solid #ede9fe;text-align:center;color:#1f2937}.cmp td:first-child{font-weight:800;color:#4c1d95}
 </style>
 </head>
 <body>
+<button class="snb" id="snb" aria-label="الصوت">🔊</button>
+<div class="w">
 
-<div id="home" class="w">
-  <div class="hero">
-    <div class="orb"><span>🧪</span><span>🌿</span><span>🌋</span><span>🔬</span></div>
-    <h1>علوم الطبيعة والحياة</h1>
-    <p>إعداد الأستاذ: عبد العزيز إسماعيل<br>متوسطة القلم إمرو الخاصة – غرداية</p>
+<div class="hero">
+  <svg viewBox="0 0 320 70" width="100%" height="64" aria-hidden="true">
+    <polyline class="wave" fill="none" stroke="#fde68a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+      points="0,35 40,35 55,35 62,8 70,62 78,14 86,56 94,26 102,40 112,35 150,35 160,35 168,12 176,58 184,20 192,48 200,32 210,35 250,35 262,35 268,16 275,54 282,24 290,40 298,35 320,35"/>
+  </svg>
+  <h1>🌍 كويز الزلازل 🌋</h1>
+  <p>علوم الطبيعة والحياة – السنة الثالثة متوسط – المورد 1 و 2<br>إعداد الأستاذ: عبد العزيز إسماعيل</p>
+</div>
+
+<div id="s1" class="card">
+  <svg viewBox="0 0 320 170" width="100%" aria-hidden="true">
+    <rect width="320" height="170" rx="14" fill="#e0f2fe"/>
+    <rect y="62" width="320" height="108" fill="#a16207"/>
+    <rect y="62" width="320" height="14" fill="#65a30d"/>
+    <rect x="30" y="30" width="22" height="32" fill="#ef4444"/><rect x="34" y="36" width="6" height="6" fill="#fef9c3"/><rect x="44" y="36" width="6" height="6" fill="#fef9c3"/>
+    <rect x="56" y="40" width="26" height="22" fill="#3b82f6"/>
+    <g class="bld"><rect x="240" y="22" width="26" height="40" fill="#f59e0b"/><rect x="245" y="29" width="6" height="6" fill="#fef9c3"/><rect x="256" y="29" width="6" height="6" fill="#fef9c3"/></g>
+    <circle cx="160" cy="62" r="6" fill="#dc2626"/>
+    <line x1="160" y1="62" x2="160" y2="130" stroke="#fff" stroke-width="2" stroke-dasharray="4 3"/>
+    <circle class="ring" cx="160" cy="130" r="62" fill="none" stroke="#fde047" stroke-width="3"/>
+    <circle class="ring" cx="160" cy="130" r="62" fill="none" stroke="#fde047" stroke-width="3"/>
+    <circle class="ring" cx="160" cy="130" r="62" fill="none" stroke="#fde047" stroke-width="3"/>
+    <circle cx="160" cy="130" r="8" fill="#ef4444" stroke="#fff" stroke-width="2"/>
+    <text x="172" y="134" font-size="13" font-weight="700" fill="#fff">البؤرة</text>
+    <text x="170" y="52" font-size="13" font-weight="700" fill="#991b1b">المركز السطحي</text>
+  </svg>
+  <label>اللقب</label><input id="ln" autocomplete="family-name" placeholder="اكتب لقبك">
+  <label>الاسم</label><input id="fn" autocomplete="given-name" placeholder="اكتب اسمك">
+  <label>القسم</label><select id="sec"><option value="">اختر رقم القسم</option><option value="1">القسم 1</option><option value="2">القسم 2</option><option value="3">القسم 3</option></select>
+  <div class="err" id="e1"></div>
+  <div style="color:#6b7280;font-size:.9rem">15 سؤالاً متنوعاً، لكل سؤال 30 ثانية، والنتيجة على 20. يُسمح بمحاولة واحدة فقط، فركّز! 💪</div>
+  <button class="go b" id="rvb">📚 مراجعة بالبطاقات والصور</button>
+  <button class="go" id="go">🚀 ابدأ الكويز</button>
+</div>
+
+<div id="s2" class="card hide">
+  <div class="top"><span id="cnt"></span><span id="pts">⭐ 0</span></div>
+  <div class="bar"><i id="pb"></i></div>
+  <div class="tm" id="tm"><i id="tb"></i><b id="tt">30</b></div>
+  <div class="qt" id="q"></div>
+  <div class="qimg" id="qimg"></div>
+  <div id="ops"></div>
+  <div id="fb"></div>
+  <button class="go b hide" id="nx">التالي ⬅</button>
+</div>
+
+<div id="s4" class="hide">
+  <div class="card">
+    <div class="qt">📚 مراجعة الدرس</div>
+    <div style="color:#6b7280;font-size:.9rem">اضغط على أي بطاقة لتقلبها وتقرأ التعريف 👇</div>
+    <div class="cg" id="cg"></div>
   </div>
-  <div class="hint">اختر سنتك الدراسية 👇</div>
-  <div id="years"></div>
-  <div class="foot">لكل كويز محاولة واحدة، ونتيجتك تصل إلى الأستاذ تلقائياً.<br>الإنترنت مطلوب لفتح المحتوى وإرسال النتيجة، والتحديثات تصلك تلقائياً.</div>
+  <div class="card">
+    <div class="qt">⚖️ ما الفرق بين القدر والشدة؟</div>
+    <table class="cmp"><tr><th></th><th>القدر (ريشتر)</th><th>الشدة (ميركالي)</th></tr>
+    <tr><td>ماذا يقيس؟</td><td>الطاقة المتحررة عند البؤرة</td><td>آثار الزلزال وأضراره</td></tr>
+    <tr><td>القيمة</td><td>واحدة لكل زلزال</td><td>تختلف من مكان إلى آخر</td></tr>
+    <tr><td>التدرج</td><td>مقياس مفتوح</td><td>12 درجة (I – XII)</td></tr>
+    <tr><td>كيف نحصل عليه؟</td><td>من تسجيلات السيزموغراف</td><td>من ملاحظة الأضرار ميدانياً</td></tr></table>
+  </div>
+  <button class="go" id="rvgo">🎯 أنا جاهز، أريد الاختبار</button>
 </div>
 
-<div id="yr" class="w hide">
-  <div class="top"><button class="bk" id="bk1">↩ رجوع</button></div>
-  <div class="yh" id="yh"></div>
-  <div id="acts"></div>
+<div id="s3" class="hide">
+  <div class="card">
+    <div id="who" style="text-align:center;font-weight:800;color:#4c1d95;font-size:1.1rem"></div>
+    <div class="stars" id="st"></div>
+    <div class="score" id="sc"></div>
+    <div id="msg" style="text-align:center;font-weight:700;color:#4b5563"></div>
+    <div id="snd" class="fb" style="text-align:center;background:#ede9fe;color:#4c1d95"></div>
+    <button class="go hide" id="rt">🔁 إعادة إرسال النتيجة للأستاذ</button>
+    <a class="go g" id="wa" target="_blank" rel="noopener">📲 إرسال النتيجة إلى الأستاذ (واتساب)</a>
+    <a class="go b" id="ml" target="_blank" rel="noopener">✉️ إرسال النتيجة بالبريد الإلكتروني</a>
+    <button class="go" id="cp">📋 نسخ النتيجة</button>
+    <div id="cpm" style="text-align:center;color:#6b7280;font-size:.9rem;margin-top:6px"></div>
+  </div>
+  <div class="card" style="text-align:center"><div class="qt">🏅 شهادتك التحفيزية</div><canvas id="cv" width="1000" height="700" style="width:100%;height:auto;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.25)"></canvas><button class="go g" id="cs">⬇️ حفظ الشهادة كصورة</button><div id="cm" style="color:#6b7280;font-size:.85rem;margin-top:6px"></div></div>
+  <div class="card"><div class="qt">📝 تصحيح الأسئلة</div><div id="rv"></div></div>
 </div>
+<div class="card hide" id="lbc"><div class="qt">🏆 لوحة الشرف</div><div id="lb"></div></div>
 
-<div id="ov" class="hide">
-  <div id="bar"><button id="bk2">↩ رجوع</button><span id="ttl"></span></div>
-  <iframe id="fr" title="المحتوى" src="about:blank"></iframe>
 </div>
-
 <script>
-/* ======== الصور (رسومات SVG مرتبطة بالمنهاج) ======== */
-function svg(b){return '<svg viewBox="0 0 300 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+b+'</svg>'}
-var ILL={
- 1:svg('<g opacity=".25" fill="#fff"><circle cx="30" cy="30" r="22"/><circle cx="270" cy="115" r="30"/><circle cx="262" cy="20" r="12"/></g>'+
-  '<polygon points="130,26 170,26 170,62 208,128 92,128 130,62" fill="rgba(255,255,255,.28)" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>'+
-  '<polygon points="112,92 188,92 208,128 92,128" fill="#34d399"/>'+
-  '<g fill="#fff"><circle class="bu" cx="140" cy="108" r="5"/><circle class="bu2" cx="160" cy="112" r="4"/><circle class="bu3" cx="150" cy="104" r="3.5"/></g>'+
-  '<rect x="124" y="20" width="52" height="8" rx="4" fill="#fff"/>'+
-  '<g font-size="34" text-anchor="middle"><text class="f1" x="46" y="62">🍎</text><text class="f2" x="252" y="58">🥛</text><text class="f3" x="52" y="118">🥦</text><text class="f1" x="250" y="118">🍞</text><text class="f2" x="228" y="34" font-size="26">🧀</text></g>'),
- 2:svg('<circle cx="262" cy="30" r="17" fill="#fde047"/><g stroke="#fde047" stroke-width="3" opacity=".7"><path d="M262 4v8M262 48v8M236 30h8M280 30h8"/></g>'+
-  '<path d="M0 140 Q70 78 150 106 T300 92 V140Z" fill="#047857"/><path d="M0 140 Q90 108 170 124 T300 116 V140Z" fill="#065f46"/>'+
-  '<ellipse cx="150" cy="122" rx="52" ry="11" fill="#38bdf8"/><ellipse cx="136" cy="120" rx="14" ry="3" fill="#bae6fd" opacity=".7"/>'+
-  '<g class="sw" fill="#064e3b"><polygon points="30,104 46,64 62,104"/><polygon points="40,104 54,74 68,104"/><rect x="44" y="104" width="4" height="12"/></g>'+
-  '<g class="sw" fill="#14532d"><polygon points="236,98 252,56 268,98"/><rect x="250" y="98" width="4" height="14"/></g>'+
-  '<g font-size="30" text-anchor="middle"><text class="f2" x="126" y="128">🐸</text><text class="f1" x="206" y="52">🦋</text><text class="f3" x="82" y="48">🐦</text><text class="f1" x="188" y="110" font-size="26">🐇</text><text class="f2" x="150" y="62" font-size="24">🌿</text></g>'),
- 3:svg('<g class="wv" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><polyline points="0,32 40,32 52,32 58,10 66,54 74,16 82,48 92,28 104,32 150,32 160,32 166,12 174,50 182,20 192,44 204,32 250,32 262,32 268,14 276,48 284,26 300,32"/></g>'+
-  '<rect y="88" width="300" height="52" fill="#78350f"/><rect y="88" width="300" height="9" fill="#65a30d"/>'+
-  '<polyline points="150,97 142,108 156,118 146,130 154,140" fill="none" stroke="#1c0a02" stroke-width="3.5" stroke-linejoin="round"/>'+
-  '<g fill="none" stroke="#fde047" stroke-width="2.5"><circle class="rg" cx="150" cy="122" r="36"/><circle class="rg rg2" cx="150" cy="122" r="36"/><circle class="rg rg3" cx="150" cy="122" r="36"/></g>'+
-  '<circle cx="150" cy="122" r="7" fill="#ef4444" stroke="#fff" stroke-width="2"/>'+
-  '<g class="sk"><rect x="214" y="52" width="30" height="36" fill="#fef3c7"/><polygon points="210,52 229,36 248,52" fill="#b91c1c"/><g fill="#38bdf8"><rect x="219" y="60" width="7" height="7"/><rect x="232" y="60" width="7" height="7"/><rect x="219" y="73" width="7" height="7"/><rect x="232" y="73" width="7" height="7"/></g></g>'+
-  '<g class="sk" style="animation-delay:.2s"><rect x="58" y="62" width="24" height="26" fill="#bfdbfe"/><polygon points="55,62 70,48 85,62" fill="#7c2d12"/></g>'),
- 4:svg('<g fill="#fff"><circle class="tw" cx="30" cy="24" r="2.5"/><circle class="tw tw2" cx="90" cy="14" r="2"/><circle class="tw tw3" cx="250" cy="28" r="3"/><circle class="tw tw2" cx="200" cy="12" r="2"/><circle class="tw" cx="274" cy="92" r="2.5"/><circle class="tw tw3" cx="24" cy="104" r="2"/></g>'+
-  '<g opacity=".25" fill="#fff"><circle cx="150" cy="70" r="52"/><circle cx="150" cy="70" r="34"/></g>'+
-  '<g font-size="58" text-anchor="middle"><text class="f1" x="150" y="94">🔬</text></g>'+
-  '<g font-size="30" text-anchor="middle"><text class="f2" x="62" y="62">🧬</text><text class="f3" x="244" y="64">⚛️</text><text class="f1" x="70" y="116">🌱</text><text class="f2" x="236" y="118">🧫</text></g>')
-};
-/* ======== السنوات والأنشطة (أضف الأنشطة الجديدة هنا) ======== */
-var YEARS=[
- {n:"السنة الأولى متوسط",c:"#0ea5e9,#0d9488",ill:1,acts:[
-   {t:"مخبر العالم الصغير",d:"لعبة تعليمية: تصنيف الأغذية والكواشف، أغذية الطاقة والبناء",u:"https://smailsnv.github.io/Kid_lab_game_1m/",e:"🧪",c:"#0ea5e9,#0d9488",tag:"لعبة"}]},
- {n:"السنة الثانية متوسط",c:"#16a34a,#65a30d",ill:2,acts:[
-   {t:"الوسط الحي",d:"مراجعة شاملة بالبطاقات المتحركة + كويز من 20 مع +1 في التقويم",u:"wasat.html",e:"🌿",c:"#16a34a,#65a30d",tag:"كويز"}]},
- {n:"السنة الثالثة متوسط",c:"#f97316,#dc2626",ill:3,acts:[
-   {t:"الزلازل: مظاهرها وخصائصها",d:"مراجعة بالبطاقات المتحركة + كويز بشهادة تحفيزية",u:"zalzal.html",e:"🌋",c:"#f97316,#dc2626",tag:"كويز"}]},
- {n:"السنة الرابعة متوسط",c:"#7c3aed,#4f46e5",ill:4,acts:[]}
-];
-/* ======== التنقل ======== */
+// ===== إعدادات الأستاذ: رقم الواتساب بالصيغة الدولية بدون + (مثال 213555123456) والبريد =====
+var TEACHER_PHONE = "";
+var TEACHER_EMAIL = "";
+// =====================================================================================
+
 var $=function(i){return document.getElementById(i)};
-var lvl=0,open_=false;
-function showV(v){$("home").classList.toggle("hide",v!==0);$("yr").classList.toggle("hide",v!==1);window.scrollTo(0,0)}
-function buildHome(){
-  var h=$("years");h.innerHTML="";
-  YEARS.forEach(function(y,i){
-    var b=document.createElement("button");b.className="yc";
-    var cnt=y.acts.length?(y.acts.length+(y.acts.length===1?" نشاط":" أنشطة")):"قريباً";
-    b.innerHTML='<div class="ill" style="background:linear-gradient(135deg,'+y.c+')">'+(y.acts.length?"":'<span class="badge">قريباً</span>')+ILL[y.ill]+'</div><div class="yb" style="background:linear-gradient(135deg,'+y.c+')"><span><b></b><small></small></span><span class="go">‹</span></div>';
-    b.querySelector("b").textContent=y.n;b.querySelector("small").textContent=cnt;
-    b.onclick=function(){openYear(i)};
-    h.appendChild(b);
+var POOL = [
+["الزلزال هو:",["اهتزاز مفاجئ للأرض ناتج عن تحرر طاقة داخلها","انجراف للتربة بفعل الأمطار","ارتفاع بطيء للجبال عبر الزمن","اندفاع الحمم من فوهة بركان"],0,"الزلزال اهتزاز مفاجئ للقشرة الأرضية ينتج عن تحرر طاقة متراكمة."],
+["النقطة داخل الأرض التي ينطلق منها الزلزال تسمى:",["المركز السطحي","البؤرة","خط الصدع","الصفيحة"],1,"البؤرة هي مصدر الزلزال في باطن الأرض."],
+["المركز السطحي للزلزال هو:",["نقطة داخل الأرض أعمق من البؤرة","النقطة على سطح الأرض الموجودة عمودياً فوق البؤرة","أبعد نقطة تصلها الاهتزازات","مكان تسجيل الجهاز"],1,"المركز السطحي يقع على سطح الأرض عمودياً فوق البؤرة."],
+["من مظاهر الزلزال على سطح الأرض:",["ظهور تشققات وصدوع وانزلاقات أرضية","تشكل الكثبان الرملية بفعل الرياح","تآكل الصخور بفعل الأمطار","تشكل الوديان بالتعرية المائية"],0,"من آثار الزلازل تشقق التربة وظهور الصدوع والانزلاقات الأرضية."],
+["من الأضرار البشرية والمادية التي يخلفها زلزال قوي:",["فيضانات ناتجة عن الأمطار الغزيرة","انهيار المباني وسقوط ضحايا وجرحى","احتراق الغابات بسبب الصواعق","تراكم الغبار في الأجواء"],1,"الزلازل القوية تُسقط المباني وتخلف ضحايا وخسائر مادية كبيرة."],
+["من الأخطار الثانوية التي تلي الزلزال:",["اندلاع حرائق بسبب تمزق أنابيب الغاز والكهرباء","هبوب العواصف الرملية","تشكل الأعاصير المدارية","حدوث الفيضانات الموسمية"],0,"تمزق شبكات الغاز والكهرباء قد يسبب حرائق بعد الزلزال."],
+["الزلزال الواحد له:",["عدة قيم لقدر ريشتر حسب المدن","قيمة واحدة لقدر ريشتر وعدة قيم لشدة ميركالي حسب المكان","شدة واحدة فقط في كل مكان","قدر يتغير بالابتعاد عن البؤرة"],1,"القدر (ريشتر) قيمة واحدة للزلزال، أما الشدة فتتغير من مكان إلى آخر."],
+["مقياس ريشتر يُستعمل لقياس:",["الأضرار المادية فقط","قدر (قوة) الزلزال أي الطاقة المتحررة","عدد الضحايا","المسافة بين البؤرة والمدينة"],1,"مقياس ريشتر يقيّم قدر الزلزال المرتبط بالطاقة المتحررة عند البؤرة."],
+["مقياس ميركالي (MSK) المقسم إلى 12 درجة يقيس:",["شدة الزلزال أي آثاره في مكان معين","طاقة الزلزال عند البؤرة","عمق البؤرة","طول الصدع"],0,"الشدة تُقدَّر حسب الآثار والأضرار الملاحظة، وتختلف من مكان إلى آخر."],
+["الخطوط التي تربط النقاط المتساوية في شدة الزلزال تسمى:",["خطوط تساوي القدر","خطوط تساوي العمق","خطوط تساوي الشدة","خطوط تساوي الارتفاع"],2,"خطوط تساوي الشدة (Isoséistes) تُرسم على خريطة المنطقة المتضررة."],
+["من الآثار التي قد يسببها زلزال تحت سطح البحر:",["انخفاض حرارة مياه البحر","التسونامي (الأمواج البحرية العاتية)","جفاف الأنهار الساحلية","ظهور الضباب فوق البحر"],1,"الزلازل البحرية قد تولّد أمواج تسونامي مدمرة على السواحل."],
+["المدينة الجزائرية التي ضربها زلزال سنة 2003 هي:",["وهران","قسنطينة","بومرداس","غرداية"],2,"زلزال بومرداس في 21 ماي 2003 بقدر حوالي 6.8."],
+["كلما ابتعدنا عن المركز السطحي للزلزال فإن شدة الزلزال:",["تزداد","تتناقص عموماً","تبقى ثابتة دائماً","تنعدم مباشرة"],1,"تتناقص الشدة عموماً بالابتعاد عن المركز السطحي."]
+];
+var TF=["صح","خطأ"];
+POOL.push(
+["صح أم خطأ: البؤرة تقع على سطح الأرض فوق المركز السطحي.",TF,1,"البؤرة داخل الأرض، والمركز السطحي هو الذي يقع على السطح فوقها."],
+["صح أم خطأ: لكل زلزال قيمة واحدة لقدر ريشتر.",TF,0,"القدر يميّز الزلزال نفسه بقيمة واحدة مهما اختلفت المدن."],
+["صح أم خطأ: شدة الزلزال (ميركالي) هي نفسها في جميع المدن المتضررة.",TF,1,"الشدة تختلف من مكان لآخر حسب الأضرار والمسافة عن المركز السطحي."],
+["صح أم خطأ: يمكن لزلزال يحدث تحت البحر أن يسبب تسونامي.",TF,0,"الزلازل البحرية القوية قد تولّد أمواجاً عاتية تضرب السواحل."],
+["أكمل: يقيس مقياس ريشتر ........ الزلزال.",["قدر (طاقة)","شدة","عمق","مدة"],0,"ريشتر يقيس القدر المرتبط بالطاقة المتحررة، أما الشدة فيقيسها ميركالي."],
+["في الرسم، الحرف الذي يمثل البؤرة هو:",["A","B","C","D"],1,"البؤرة نقطة داخل الأرض، والمركز السطحي (A) فوقها على السطح.",'<svg viewBox="0 0 300 170"><rect width="300" height="170" fill="#e0f2fe"/><rect y="60" width="300" height="110" fill="#a16207"/><rect y="60" width="300" height="10" fill="#65a30d"/><rect x="215" y="30" width="30" height="30" fill="#ef4444"/><polygon points="212,30 230,14 248,30" fill="#7f1d1d"/><line x1="150" y1="64" x2="150" y2="130" stroke="#fff" stroke-dasharray="4 3" stroke-width="2"/><circle cx="150" cy="64" r="7" fill="#fde047" stroke="#1f2937"/><circle cx="150" cy="130" r="7" fill="#dc2626" stroke="#fff" stroke-width="2"/><g font-size="16" font-weight="800" fill="#1f2937"><text x="160" y="52">A</text><text x="162" y="134" fill="#fff">B</text><text x="224" y="26">C</text><text x="40" y="104" fill="#fff">D</text></g><circle cx="45" cy="115" r="6" fill="#92400e" stroke="#fff"/></svg>'],
+["في خريطة تساوي الشدة، أي المدن تعرضت لأكبر شدة؟",["A","B","C","كلها متساوية"],0,"الشدة أكبر قرب المركز السطحي وتتناقص بالابتعاد عنه.",'<svg viewBox="0 0 300 170"><rect width="300" height="170" fill="#fef9c3"/><g fill="none" stroke="#dc2626" stroke-width="2"><circle cx="150" cy="85" r="22"/><circle cx="150" cy="85" r="48"/><circle cx="150" cy="85" r="76"/></g><g font-size="11" font-weight="700" fill="#7f1d1d"><text x="144" y="62">VIII</text><text x="190" y="85">VI</text><text x="222" y="85">IV</text></g><g font-size="16" font-weight="800" fill="#1f2937"><circle cx="150" cy="85" r="4"/><text x="132" y="96">A</text><circle cx="150" cy="128" r="4"/><text x="158" y="132">B</text><circle cx="86" cy="85" r="4"/><text x="60" y="80">C</text></g></svg>']
+);
+var Q=POOL,NQ=15;
+function shuf(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function prep(){
+  return shuf(POOL.slice()).slice(0,NQ).map(function(q){
+    if(q[1]===TF||q[4])return q;
+    var idx=shuf([0,1,2,3]);
+    return [q[0],idx.map(function(i){return q[1][i]}),idx.indexOf(q[2]),q[3]];
   });
 }
-function openYear(i){
-  var y=YEARS[i];
-  $("yh").innerHTML='<div class="ill" style="background:linear-gradient(135deg,'+y.c+')">'+ILL[y.ill]+'</div><h2 style="background:linear-gradient(135deg,'+y.c+')"></h2>';
-  $("yh").querySelector("h2").textContent=y.n;
-  var a=$("acts");a.innerHTML="";
-  y.acts.forEach(function(x){
-    var b=document.createElement("button");b.className="act";
-    b.innerHTML='<span class="e" style="background:linear-gradient(135deg,'+x.c+')"></span><span><b></b><small></small></span><span class="st"></span>';
-    b.querySelector(".e").textContent=x.e;b.querySelector("b").textContent=x.t;b.querySelector("small").textContent=x.d;b.querySelector(".st").textContent=x.tag||"";
-    b.onclick=function(){openAct(x.u,x.e+" "+x.t)};
-    a.appendChild(b);
+var A=function(q,a){return a<0?"لم يُجب (انتهى الوقت)":q[1][a]};
+/* ===== أصوات ===== */
+var AC=null,SND=true;
+function tone(f,d,t,v){if(!SND||!AC)return;try{var o=AC.createOscillator(),g=AC.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.15;o.connect(g);g.connect(AC.destination);var n=AC.currentTime;g.gain.exponentialRampToValueAtTime(.001,n+d);o.start(n);o.stop(n+d)}catch(e){}}
+function seq(a,d,t){a.forEach(function(f,i){setTimeout(function(){tone(f,d,t)},i*d*900)})}
+var SFX={ok:function(){seq([660,880,1100],.15)},no:function(){seq([220,160],.25,"sawtooth")},tick:function(){tone(1000,.06,"square",.08)},win:function(){seq([523,659,784,1047],.2)},lose:function(){seq([330,294,262],.25)},click:function(){tone(600,.05)}};
+$("snb").onclick=function(){SND=!SND;this.textContent=SND?"🔊":"🔇"};
+
+var cur=0,ans=[],name="",good=0,locked=false,LET=["أ","ب","ج","د"];
+function show(id){["s1","s2","s3","s4"].forEach(function(s){$(s).classList.toggle("hide",s!==id)});$("lbc").classList.toggle("hide",!DB||id==="s2");window.scrollTo(0,0)}
+$("go").onclick=function(){
+  var l=$("ln").value.trim(),f=$("fn").value.trim();
+  if(l.length<2||f.length<2){$("e1").textContent="يرجى كتابة الاسم واللقب كاملين.";return}
+  if(!$("sec").value){$("e1").textContent="يرجى اختيار رقم القسم.";return}
+  window.SECTION=$("sec").value;
+  try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();AC.resume()}catch(e){}
+  name=l+" "+f;
+  var adm=(l==="ABD-TEST");
+  KEY="k"+hash([l,f].map(norm).sort().join("|")+"|"+SECTION);
+  DISP=f+" "+l.charAt(0)+".";
+  var go=function(){
+    if(!adm){try{localStorage.setItem("zq_"+KEY,"1")}catch(e){}}
+    Q=prep();cur=0;ans=[];good=0;show("s2");render();
+  };
+  var blocked=function(){$("e1").textContent="⛔ هذا الاسم أنجز الكويز من قبل. المحاولة واحدة فقط."};
+  if(!adm){try{if(localStorage.getItem("zq_"+KEY)){blocked();return}}catch(e){}}
+  if(DB&&!adm){DB.doc("scores/"+KEY).get().then(function(d){if(d.exists)blocked();else go()},function(){go()})}else go();
+};
+var KEY="",DISP="",DB=null;
+function norm(x){return x.toLowerCase().replace(/[\sًٌٍَُِّْـ]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي")}
+function hash(x){var h=5381;for(var i=0;i<x.length;i++)h=((h<<5)+h+x.charCodeAt(i))|0;return Math.abs(h).toString(36)}
+var TMR=null,T0=0,TL=30;
+function stopT(){if(TMR){clearInterval(TMR);TMR=null}}
+function startT(){
+  stopT();T0=Date.now();var last=-1;$("tm").classList.remove("lo");
+  TMR=setInterval(function(){
+    var left=Math.max(0,TL-(Date.now()-T0)/1000),sec=Math.ceil(left);
+    $("tb").style.width=(left/TL*100)+"%";$("tt").textContent="⏱ "+sec;
+    if(left<=8)$("tm").classList.add("lo");
+    if(sec!==last&&sec<=5&&sec>0)SFX.tick();
+    last=sec;
+    if(left<=0){stopT();pick(-1)}
+  },200);
+}
+function render(){
+  var q=Q[cur];locked=false;
+  $("cnt").textContent="السؤال "+(cur+1)+" / "+Q.length;
+  $("pts").textContent="⭐ "+good;
+  $("pb").style.width=(cur/Q.length*100)+"%";
+  $("q").textContent=q[0];$("fb").innerHTML="";$("nx").classList.add("hide");
+  $("ops").innerHTML="";
+  q[1].forEach(function(t,i){
+    var b=document.createElement("button");b.className="opt";
+    b.innerHTML='<span class="l">'+LET[i]+'</span><span></span>';
+    b.lastChild.textContent=t;
+    b.onclick=function(){pick(i)};
+    $("ops").appendChild(b);
   });
-  var s=document.createElement("div");s.className="soon";
-  s.textContent=y.acts.length?"✨ أنشطة أخرى ستُضاف هنا قريباً":"🚀 المحتوى قيد الإعداد وسيظهر هنا قريباً بإذن الله";
-  a.appendChild(s);
-  showV(1);lvl=1;try{history.pushState({l:1},"")}catch(e){}
+  $("nx").textContent=cur===Q.length-1?"🏁 عرض النتيجة":"التالي ⬅";
+  $("qimg").innerHTML=q[4]||"";
+  startT();
 }
-function openAct(u,t){
-  $("fr").src=u;$("ttl").textContent=t;$("ov").classList.remove("hide");open_=true;lvl=2;
-  try{history.pushState({l:2},"")}catch(e){}
+function pick(i){
+  if(locked)return;locked=true;stopT();
+  var q=Q[cur],right=i===q[2];ans[cur]=i;
+  (right?SFX.ok:SFX.no)();try{if(!right&&navigator.vibrate)navigator.vibrate(200)}catch(e){}
+  if(right)good++;
+  var bs=$("ops").children;
+  [].forEach.call(bs,function(b,j){b.disabled=true;if(j===q[2])b.classList.add("ok");else if(j===i)b.classList.add("no")});
+  $("pts").textContent="⭐ "+good;
+  $("fb").innerHTML='<div class="fb '+(right?"ok":"no")+'">'+(right?"🎉 أحسنت! إجابة صحيحة. ":i<0?"⏰ انتهى الوقت! ":"😬 إجابة خاطئة. ")+q[3]+'</div>';
+  var c=$("s2");c.classList.remove("shake","pop");void c.offsetWidth;c.classList.add(right?"pop":"shake");
+  $("nx").classList.remove("hide");
 }
-function closeAct(){open_=false;$("ov").classList.add("hide");$("fr").src="about:blank"}
-function stepBack(){
-  if(lvl===2){closeAct();lvl=1}else if(lvl===1){showV(0);lvl=0}
+$("nx").onclick=function(){if(cur<Q.length-1){cur++;render()}else finish()};
+var report="";
+function finish(){
+  var ok=good,sc=ok*20/Q.length,s=(Math.round(sc*100)/100).toString();
+  $("pb").style.width="100%";
+  $("who").textContent=name;
+  $("sc").textContent=s+" / 20";
+  var n=sc>=16?3:sc>=10?2:1;$("st").textContent="⭐".repeat(n)+"☆".repeat(3-n);
+  $("msg").textContent=ok+" إجابة صحيحة من "+Q.length+(sc>=16?" – ممتاز، أنت خبير زلازل! 🏆":sc>=10?" – أحسنت، واصل المراجعة 💪":" – راجع الدرس وأعد المحاولة 📚");
+  report="كويز الزلازل – علوم الطبيعة والحياة 3 متوسط (الأستاذ عبد العزيز إسماعيل)\nالتلميذ(ة): "+name+"\nالقسم: "+SECTION+"\nالنتيجة: "+s+" / 20 ("+ok+" من "+Q.length+")\n\nتفاصيل الإجابات:";
+  Q.forEach(function(q,i){var g=ans[i]===q[2];report+="\n"+(i+1)+") "+q[0]+"\n   إجابة التلميذ: "+A(q,ans[i])+(g?" ✔":" ✘ (الصحيح: "+q[1][q[2]]+")");});
+  lastData={"القسم":SECTION,"اللقب والاسم":name,"النتيجة":s+" / 20","الإجابات الصحيحة":ok+" من "+Q.length,"الإجابات الكاملة":report,"_subject":"نتيجة كويز الزلازل – القسم "+SECTION+" – "+name};
+  var enc=encodeURIComponent(report);
+  $("wa").href="https://wa.me/"+TEACHER_PHONE+"?text="+enc;
+  $("ml").href="mailto:"+TEACHER_EMAIL+"?subject="+encodeURIComponent("نتيجة كويز الزلازل – "+name)+"&body="+enc;
+  var h="";
+  Q.forEach(function(q,i){
+    var g=ans[i]===q[2];
+    h+='<div class="rv '+(g?"ok":"no")+'"><b>'+(i+1)+". "+q[0]+"</b><br>"+(g?"✔ ":"✘ إجابتك: "+A(q,ans[i])+"<br>✔ ")+"الصحيح: "+q[1][q[2]]+"<br><span>"+q[3]+"</span></div>";
+  });
+  $("rv").innerHTML=h;
+  show("s3");
+  sendResult();
+  (sc>=10?SFX.win:SFX.lose)();saveLB(sc,ok);drawCert(sc,s);
+  if(sc>=10){var e=["🎉","⭐","🎊","✨"];for(var k=0;k<28;k++){(function(k){var d=document.createElement("div");d.className="cf";d.textContent=e[k%4];d.style.left=Math.random()*95+"%";d.style.animationDelay=Math.random()*1.5+"s";document.body.appendChild(d);setTimeout(function(){d.remove()},5000)})(k)}}
 }
-function goBack(){
-  var before=lvl;
-  try{history.back()}catch(e){}
-  setTimeout(function(){if(lvl===before)stepBack()},250);
+var FORM_URL="https://script.google.com/macros/s/AKfycbxkIGl5xK6arqHHcJ1GxhrRySxGN4L_-R8QHgjZI7lauIQRa3BkDeuGlYf8gzHiivv3_Q/exec",lastData={};
+function sendResult(){
+  var el=$("snd");el.className="fb";el.style.background="#ede9fe";el.style.color="#4c1d95";
+  el.textContent="⏳ جارٍ إرسال الإجابات الكاملة إلى الأستاذ...";$("rt").classList.add("hide");
+  var okf=function(){el.className="fb ok";el.style.background="";el.style.color="";el.textContent="✅ تم إرسال إجاباتك ونتيجتك إلى الأستاذ."};
+  var bad=function(){
+    try{
+      var f=document.createElement("form");f.method="POST";f.action=FORM_URL;f.target="_blank";f.style.display="none";
+      Object.keys(lastData).forEach(function(k){var i=document.createElement("input");i.type="hidden";i.name=k;i.value=lastData[k];f.appendChild(i)});
+      document.body.appendChild(f);f.submit();document.body.removeChild(f);
+      el.className="fb";el.style.background="#fef3c7";el.style.color="#78350f";
+      el.textContent="📨 فُتحت نافذة جديدة لإتمام الإرسال. إن لم تظهر رسالة نجاح اضغط زر إعادة الإرسال إن لم تصل الرسالة.";
+    }catch(e){el.className="fb no";el.style.background="";el.style.color="";el.textContent="❌ تعذر الإرسال تلقائياً، اضغط زر إعادة الإرسال."}
+    $("rt").classList.remove("hide");
+  };
+  try{
+    var body=new URLSearchParams();Object.keys(lastData).forEach(function(k){body.append(k,lastData[k])});
+    fetch(FORM_URL,{method:"POST",mode:"no-cors",body:body}).then(function(){okf()}).catch(bad);
+  }catch(e){bad()}
 }
-window.addEventListener("popstate",stepBack);
-$("bk1").onclick=goBack;$("bk2").onclick=goBack;
-buildHome();
+$("rt").onclick=sendResult;
+function loadLB(){
+  if(!DB)return;
+  DB.collection("scores").orderBy("score","desc").limit(10).get().then(function(sn){
+    var h="",m=["🥇","🥈","🥉"];
+    sn.docs.forEach(function(d,i){var v=d.data()||{};h+='<div class="lbr"><span>'+(m[i]||(i+1))+'</span><span></span><em>'+v.score+'</em><span style="color:#6b7280;font-size:.8rem">قسم '+v.sec+'</span></div>'});
+    $("lb").innerHTML=h||'<div class="lbr">كن أول المتصدرين! 🚀</div>';
+    [].forEach.call($("lb").children,function(r,i){var d=sn.docs[i];if(d&&r.children[1])r.children[1].textContent=(d.data()||{}).name||""});
+    $("lbc").classList.toggle("hide",$("s2").classList.contains("hide")===false);
+  }).catch(function(){});
+}
+function saveLB(sc,ok){
+  if(!DB)return;
+  DB.doc("scores/"+KEY).set({name:DISP,sec:SECTION,score:Math.round(sc*100)/100,ok:ok,n:Q.length,t:Date.now()}).then(loadLB,function(){});
+}
+(function(){
+  try{if(window.claude&&claude.use){claude.use("db").then(function(d){if(d){DB=d;loadLB();$("lbc").classList.remove("hide")}}).catch(function(){})}}catch(e){}
+})();
+$("cp").onclick=function(){
+  var done=function(){$("cpm").textContent="تم نسخ النتيجة، يمكنك لصقها وإرسالها للأستاذ."};
+  try{navigator.clipboard.writeText(report).then(done,fb)}catch(e){fb()}
+  function fb(){var t=document.createElement("textarea");t.value=report;document.body.appendChild(t);t.select();try{document.execCommand("copy");done()}catch(e){$("cpm").textContent="تعذر النسخ، انسخ النتيجة يدوياً."}document.body.removeChild(t)}
+};
+var SV=function(b){return "<svg viewBox='0 0 60 60'>"+b+"</svg>"};
+var CARDS=[
+["الزلزال","#7c3aed,#4f46e5",SV("<polyline points='2,30 14,30 18,10 24,50 30,18 36,42 40,30 58,30' fill='none' stroke='#fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>"),"اهتزاز مفاجئ للقشرة الأرضية ناتج عن تحرر طاقة متراكمة داخل الأرض."],
+["البؤرة","#dc2626,#ea580c",SV("<rect y='24' width='60' height='36' fill='#fde68a' opacity='.5'/><circle cx='30' cy='42' r='6' fill='#fff'/><circle cx='30' cy='42' r='12' fill='none' stroke='#fff' stroke-width='2' stroke-dasharray='3 3'/><circle cx='30' cy='42' r='20' fill='none' stroke='#fff' stroke-width='1.5' stroke-dasharray='3 3'/>"),"نقطة داخل الأرض ينطلق منها الزلزال وتتحرر عندها الطاقة."],
+["المركز السطحي","#0d9488,#16a34a",SV("<line x1='4' y1='28' x2='56' y2='28' stroke='#fff' stroke-width='3'/><line x1='30' y1='28' x2='30' y2='50' stroke='#fff' stroke-dasharray='3 3' stroke-width='2'/><circle cx='30' cy='24' r='6' fill='#fde047'/><circle cx='30' cy='52' r='5' fill='#fff'/>"),"النقطة على سطح الأرض الموجودة عمودياً فوق البؤرة، وهي أول ما تضربه الهزة بقوة."],
+["القدر (ريشتر)","#f59e0b,#ef4444",SV("<rect x='8' y='40' width='8' height='14' fill='#fff'/><rect x='20' y='30' width='8' height='24' fill='#fff'/><rect x='32' y='20' width='8' height='34' fill='#fff'/><rect x='44' y='8' width='8' height='46' fill='#fff'/>"),"يعبّر عن الطاقة المتحررة عند البؤرة. لكل زلزال قيمة قدر واحدة."],
+["الشدة (ميركالي)","#2563eb,#7c3aed",SV("<text x='30' y='38' text-anchor='middle' font-size='20' font-weight='800' fill='#fff'>I–XII</text>"),"تقيم آثار الزلزال وأضراره في مكان معين بـ 12 درجة. تختلف من مكان إلى آخر."],
+["خطوط تساوي الشدة","#db2777,#9333ea",SV("<ellipse cx='30' cy='30' rx='8' ry='6' fill='none' stroke='#fff' stroke-width='2.5'/><ellipse cx='30' cy='30' rx='17' ry='13' fill='none' stroke='#fff' stroke-width='2.5'/><ellipse cx='30' cy='30' rx='26' ry='20' fill='none' stroke='#fff' stroke-width='2.5'/>"),"خطوط مغلقة تربط النقاط التي لها نفس الشدة، وتتمركز حول المركز السطحي."],
+["مظاهر الزلزال","#92400e,#b45309",SV("<polyline points='30,4 26,20 34,30 24,42 32,57' fill='none' stroke='#fff' stroke-width='3' stroke-linejoin='round'/>"),"تشققات وصدوع في التربة، انزلاقات أرضية، وتغيّر في ملامح السطح."],
+["الأضرار المخلّفة","#475569,#1e293b",SV("<rect x='8' y='30' width='16' height='26' fill='#fff'/><polygon points='30,56 34,34 52,40 54,56' fill='#fff' opacity='.85'/><polyline points='4,58 56,58' stroke='#fff' stroke-width='2'/>"),"انهيار المباني، ضحايا وجرحى، خسائر مادية، وحرائق بسبب تمزق شبكات الغاز والكهرباء."],
+["التسونامي","#0284c7,#0d9488",SV("<path d='M0,40 Q10,20 20,40 T40,40 T60,40 V60 H0Z' fill='#fff' opacity='.9'/>"),"أمواج بحرية عاتية تنتج عن زلزال قوي تحت سطح البحر وتضرب السواحل."]
+];
+function buildRv(){
+  var g=$("cg");if(g.children.length)return;
+  CARDS.forEach(function(c,i){
+    var d=document.createElement("div");d.className="fc";
+    d.innerHTML="<div class='fi'><div class='ff' style='background:linear-gradient(135deg,"+c[1]+")'>"+c[2]+"<span></span><small>اضغط للقلب 🔄</small></div><div class='fk'><b></b><span></span></div></div>";
+    d.querySelector(".ff span").textContent=c[0];d.querySelector(".fk b").textContent=c[0];d.querySelector(".fk span").textContent=c[3];
+    d.querySelector(".ff").style.animationDelay=(i*.25)+"s";
+    d.onclick=function(){d.classList.toggle("f");SFX.click()};
+    g.appendChild(d);
+  });
+}
+$("rvb").onclick=function(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();AC.resume()}catch(e){}buildRv();show("s4");SFX.click()};
+$("rvgo").onclick=function(){show("s1")};
+function drawCert(sc,s){
+  var c=$("cv"),x=c.getContext("2d"),W=1000,H=700;
+  var tier=sc>=16?["شهادة تميّز","#b45309","🏆"]:sc>=10?["شهادة تشجيع","#6d28d9","⭐"]:["شهادة مثابرة","#0f766e","💪"];
+  var g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,"#fffbeb");g.addColorStop(1,"#fef3c7");x.fillStyle=g;x.fillRect(0,0,W,H);
+  x.lineWidth=14;x.strokeStyle=tier[1];x.strokeRect(24,24,W-48,H-48);x.lineWidth=3;x.strokeRect(46,46,W-92,H-92);
+  x.direction="rtl";x.textAlign="center";
+  var F="'Segoe UI',Tahoma,'Noto Naskh Arabic',Arial,sans-serif";
+  function t(txt,y,sz,col,wt){x.font=(wt||"700")+" "+sz+"px "+F;x.fillStyle=col;x.fillText(txt,W/2,y)}
+  t(tier[2]+" "+tier[2]+" "+tier[2],120,54,"#000");
+  t(tier[0],195,64,tier[1],"800");
+  t("تُمنح للتلميذ(ة)",262,30,"#4b5563","600");
+  var nm=name,sz=56;x.font="800 "+sz+"px "+F;while(x.measureText(nm).width>800&&sz>26){sz-=3;x.font="800 "+sz+"px "+F}
+  t(nm,340,sz,"#1e1b4b","800");
+  x.strokeStyle=tier[1];x.lineWidth=2;x.beginPath();x.moveTo(250,362);x.lineTo(750,362);x.stroke();
+  t("القسم "+SECTION+" – على مشاركته المتميزة في كويز الزلازل",420,30,"#374151","600");
+  t("علوم الطبيعة والحياة – السنة الثالثة متوسط",464,26,"#6b7280","600");
+  t("العلامة: "+s+" / 20",545,52,tier[1],"800");
+  var d="";try{d=new Date().toLocaleDateString("ar-DZ")}catch(e){}
+  x.textAlign="right";x.font="600 24px "+F;x.fillStyle="#6b7280";x.fillText(d,W-90,625);
+  x.textAlign="left";x.fillStyle="#1f2937";x.fillText("الأستاذ: عبد العزيز إسماعيل",90,625);
+  $("cm").textContent="";
+}
+$("cs").onclick=function(){
+  var m=$("cm");
+  var fb=function(){m.textContent="اضغط مطوّلاً على الصورة ثم اختر «حفظ الصورة»."};
+  try{claude.use("downloads").then(function(d){
+    if(!d){fb();return}
+    $("cv").toBlob(function(b){d.save({filename:"certificate.png",data:b}).then(function(){m.textContent="✅ تم حفظ الشهادة"},function(e){if(!e||e.code!=="declined")fb()})},"image/png");
+  }).catch(fb)}catch(e){fb()}
+};
 </script>
 </body>
 </html>
