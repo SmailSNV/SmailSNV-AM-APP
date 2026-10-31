@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>كويز الوسط الحي – علوم الطبيعة والحياة 2 متوسط</title>
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#1f2937;font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;line-height:1.7;background:linear-gradient(160deg,#064e3b 0%,#059669 55%,#fbbf24 125%);background-attachment:fixed;overflow-x:hidden}
+.w{max-width:640px;margin:0 auto;padding:14px}
+.hero{text-align:center;color:#fff;padding:4px 0 10px}
+.hero h1{margin:4px 0;font-size:1.4rem;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+.hero p{margin:0;font-size:.86rem;opacity:.92}
+.card{background:#fff;border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.hide{display:none!important}
+label{font-weight:700;color:#065f46}
+input,select{width:100%;padding:13px;border:2px solid #a7f3d0;border-radius:14px;font:inherit;background:#f0fdf4;color:#1f2937;margin:6px 0 12px}
+input:focus,select:focus{outline:none;border-color:#059669}
+.go{display:block;width:100%;padding:14px;border:0;border-radius:16px;font:inherit;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#f97316,#ef4444);box-shadow:0 5px 0 #b91c1c;cursor:pointer;text-align:center;text-decoration:none;margin-top:12px}
+.go:active{transform:translateY(3px);box-shadow:0 2px 0 #b91c1c}
+.go:disabled{opacity:.45}
+.go.g{background:linear-gradient(90deg,#059669,#0d9488);box-shadow:0 5px 0 #065f46}
+.go.b{background:linear-gradient(90deg,#7c3aed,#4f46e5);box-shadow:0 5px 0 #3730a3}
+.err{color:#dc2626;font-size:.9rem;min-height:1.3em}
+.mut{color:#6b7280;font-size:.9rem}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:700;color:#065f46;margin-bottom:8px}
+.bar{height:12px;background:#d1fae5;border-radius:12px;overflow:hidden;margin-bottom:10px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f97316,#facc15);border-radius:12px;transition:width .4s}
+.tm{position:relative;height:22px;background:#fee2e2;border-radius:12px;overflow:hidden;margin-bottom:10px}
+.tm i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#22c55e,#facc15);transition:width .25s linear}
+.tm.lo i{background:linear-gradient(90deg,#ef4444,#f97316)}
+.tm b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.qt{font-size:1.08rem;font-weight:800;margin:6px 0 10px;color:#064e3b}
+.qimg{text-align:center;margin:6px 0}.qimg svg{max-width:100%;height:auto;border-radius:12px}
+.opt{display:flex;align-items:center;gap:10px;width:100%;text-align:right;padding:12px;margin:9px 0;border:2px solid #e5e7eb;border-radius:16px;background:#f9fafb;color:#1f2937;font:inherit;font-weight:600;cursor:pointer;box-shadow:0 3px 0 #d1d5db}
+.opt .l{flex:0 0 34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+.opt:nth-child(1) .l{background:#ef4444}.opt:nth-child(2) .l{background:#3b82f6}.opt:nth-child(3) .l{background:#f59e0b}.opt:nth-child(4) .l{background:#10b981}
+.opt.ok{background:#dcfce7;border-color:#16a34a;color:#14532d;box-shadow:0 3px 0 #16a34a}
+.opt.no{background:#fee2e2;border-color:#dc2626;color:#7f1d1d;box-shadow:0 3px 0 #dc2626}
+.opt.used{opacity:.35}
+.opt:disabled{cursor:default}
+.chosen{min-height:48px;border:2px dashed #6ee7b7;border-radius:14px;padding:6px;margin:8px 0;display:flex;flex-wrap:wrap;gap:6px}
+.chosen span{background:#d1fae5;border-radius:10px;padding:4px 10px;font-weight:700;color:#065f46;font-size:.9rem}
+.fb{border-radius:14px;padding:10px 12px;margin-top:8px;font-weight:600;font-size:.93rem}
+.fb.ok{background:#dcfce7;color:#14532d}.fb.no{background:#fee2e2;color:#7f1d1d}
+.shake{animation:sh .5s}@keyframes sh{0%,100%{transform:translateX(0)}15%{transform:translateX(-9px)}30%{transform:translateX(9px)}45%{transform:translateX(-7px)}60%{transform:translateX(7px)}80%{transform:translateX(-3px)}}
+.pop{animation:pp .45s}@keyframes pp{0%{transform:scale(.96)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+.score{font-size:2.8rem;font-weight:900;text-align:center;background:linear-gradient(90deg,#f97316,#059669);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.3}
+.stars{text-align:center;font-size:1.8rem;letter-spacing:4px}
+.rv{border-radius:14px;padding:10px 12px;margin:8px 0;font-size:.92rem}
+.rv.ok{background:#dcfce7;color:#14532d}.rv.no{background:#fee2e2;color:#7f1d1d}.rv span{color:#4b5563}
+.cf{position:fixed;top:-30px;font-size:1.5rem;pointer-events:none;animation:fall 3s linear forwards;z-index:9}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.snb{position:fixed;top:8px;left:8px;z-index:20;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:1.2rem;cursor:pointer}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:8px}
+.tabs button{flex:0 0 auto;border:0;border-radius:12px;padding:8px 12px;font:inherit;font-weight:700;background:#d1fae5;color:#065f46;cursor:pointer}
+.tabs button.on{background:#059669;color:#fff}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.fc{perspective:800px;height:200px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fi{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.fc.f .fi{transform:rotateY(180deg)}
+.ff,.fk{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.ff{color:#fff;font-weight:800;gap:4px;animation:fl 3s ease-in-out infinite}
+.ff .em{font-size:2.6rem}.ff small{font-weight:600;opacity:.9;font-size:.72rem}
+.fk{transform:rotateY(180deg);background:#fff;color:#1f2937;border:3px solid #a7f3d0;font-size:.84rem;font-weight:600;line-height:1.55;overflow:auto}
+.fk b{color:#059669;display:block;margin-bottom:4px;font-size:.95rem}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sum{background:#ecfdf5;border-right:5px solid #059669;border-radius:12px;padding:10px 12px;font-weight:600;color:#064e3b;margin-top:6px}
+.chain{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px;margin:10px 0}
+.chain span{text-align:center;font-size:2rem;line-height:1.2;animation:bn 2s ease-in-out infinite}
+.chain span small{display:block;font-size:.7rem;font-weight:700;color:#065f46}
+.chain b{color:#f97316;font-size:1.4rem;animation:pl 1s ease-in-out infinite alternate}
+@keyframes bn{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes pl{from{opacity:.4}to{opacity:1}}
+.bm{display:flex;align-items:center;gap:8px;margin:6px 0}
+.bm em{flex:0 0 108px;font-style:normal;font-weight:700;font-size:.85rem;color:#065f46}
+.bm div{height:26px;border-radius:8px;background:linear-gradient(90deg,#059669,#facc15);color:#fff;font-weight:800;font-size:.8rem;display:flex;align-items:center;padding:0 8px;min-width:46px;transition:width .5s}
+.sky{animation:sw 4s ease-in-out infinite;transform-origin:50% 100%;transform-box:fill-box}
+@keyframes sw{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+</style>
+</head>
+<body>
+<button class="snb" id="snb" aria-label="الصوت">🔊</button>
+<div class="w">
+
+<div class="hero">
+  <svg viewBox="0 0 320 80" width="100%" height="76" aria-hidden="true">
+    <circle cx="270" cy="26" r="16" fill="#fde047"/>
+    <g class="sky" fill="#bbf7d0"><path d="M20,80 L26,40 L32,80Z"/><path d="M38,80 L46,30 L54,80Z"/><path d="M62,80 L68,46 L74,80Z"/></g>
+    <path d="M0,80 Q80,52 160,66 T320,56 V80Z" fill="#065f46"/>
+    <text x="110" y="44" font-size="26">🦋</text><text x="170" y="58" font-size="22">🐦</text><text x="215" y="66" font-size="22">🐸</text>
+  </svg>
+  <h1>🌿 كويز الوسط الحي 🌍</h1>
+  <p>علوم الطبيعة والحياة – السنة الثانية متوسط<br>إعداد الأستاذ: عبد العزيز إسماعيل</p>
+</div>
+
+<div id="s1" class="card">
+  <label>اللقب</label><input id="ln" autocomplete="family-name" placeholder="اكتب لقبك">
+  <label>الاسم</label><input id="fn" autocomplete="given-name" placeholder="اكتب اسمك">
+  <label>القسم</label>
+  <select id="sec"><option value="">اختر رقم القسم</option><option value="1">القسم 1 (ذكور)</option><option value="2">القسم 2 (ذكور)</option><option value="3">القسم 3 (إناث)</option></select>
+  <div class="err" id="e1"></div>
+  <button class="go b" id="rvb">📚 المراجعة الشاملة بالبطاقات والصور</button>
+  <button class="go" id="go">🚀 ابدأ الكويز &nbsp;<span style="background:#fde047;color:#7c2d12;border-radius:10px;padding:2px 9px;font-size:.85rem">+1 في التقويم</span></button>
+  <div class="mut" style="margin-top:10px">20 سؤالاً متنوعاً (اختيار، صح/خطأ، حساب، ترتيب)، لكل سؤال 30 ثانية، والنتيجة على 20. محاولة واحدة فقط! 💪</div>
+</div>
+
+<div id="s4" class="hide">
+  <div class="card">
+    <div class="qt">📚 المراجعة الشاملة</div>
+    <div class="mut">اختر الدرس، ثم اضغط على البطاقة لتقلبها 👇</div>
+    <div class="tabs" id="tabs"></div>
+    <div id="lsn"></div>
+  </div>
+  <button class="go" id="rvgo">🎯 أنا جاهز، أريد الاختبار</button>
+</div>
+
+<div id="s2" class="card hide">
+  <div class="top"><span id="cnt"></span><span id="pts">⭐ 0</span></div>
+  <div class="bar"><i id="pb"></i></div>
+  <div class="tm" id="tm"><i id="tb"></i><b id="tt">30</b></div>
+  <div class="qt" id="q"></div>
+  <div class="qimg" id="qimg"></div>
+  <div id="ops"></div>
+  <div id="fb"></div>
+  <button class="go b hide" id="nx">التالي ⬅</button>
+</div>
+
+<div id="s3" class="hide">
+  <div class="card">
+    <div id="who" style="text-align:center;font-weight:800;color:#065f46;font-size:1.1rem"></div>
+    <div class="stars" id="st"></div>
+    <div class="score" id="sc"></div>
+    <div id="bn" style="text-align:center;font-weight:800;color:#b45309"></div>
+    <div id="msg" style="text-align:center;font-weight:700;color:#4b5563"></div>
+    <div id="snd" class="fb" style="text-align:center;background:#ecfdf5;color:#065f46"></div>
+    <button class="go hide" id="rt">🔁 إعادة إرسال النتيجة للأستاذ</button>
+    <button class="go b" id="rvb2">📚 العودة إلى المراجعة</button>
+  </div>
+  <div class="card" style="text-align:center"><div class="qt">🏅 شهادتك التحفيزية</div>
+    <canvas id="cv" width="1000" height="700" style="width:100%;height:auto;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.25)"></canvas>
+    <button class="go g" id="cs">⬇️ حفظ الشهادة كصورة</button>
+  </div>
+  <div class="card"><div class="qt">📝 تصحيح الأسئلة</div><div id="rv"></div></div>
+</div>
+
+</div>
+<script>
+// ===== رابط استلام النتائج (Google Apps Script) =====
+var FORM_URL="https://script.google.com/macros/s/AKfycbxkIGl5xK6arqHHcJ1GxhrRySxGN4L_-R8QHgjZI7lauIQRa3BkDeuGlYf8gzHiivv3_Q/exec";
+var TITLE="2 متوسط";
+var T_LOAD=Date.now(),DONE=false;
+function fmtT(ms){var t=Math.round(ms/1000),m=Math.floor(t/60);return m+" د "+(t%60)+" ث"}
+// =====================================================
+var $=function(i){return document.getElementById(i)};
+function shuf(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function norm(x){return x.toLowerCase().replace(/[\s\u064B-\u0652\u0640]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي")}
+function hash(x){var h=5381;for(var i=0;i<x.length;i++)h=((h<<5)+h+x.charCodeAt(i))|0;return Math.abs(h).toString(36)}
+function toNum(s){s=String(s).replace(/[٠-٩]/g,function(d){return "٠١٢٣٤٥٦٧٨٩".indexOf(d)}).replace(/[،,]/g,".").replace(/[^0-9.\-]/g,"");return s===""?NaN:parseFloat(s)}
+function fmt(n){return (Math.round(n*1000)/1000).toString()}
+
+/* ===== الأصوات ===== */
+var AC=null,SND=true;
+function tone(f,d,t,v){if(!SND||!AC)return;try{var o=AC.createOscillator(),g=AC.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.15;o.connect(g);g.connect(AC.destination);var n=AC.currentTime;g.gain.exponentialRampToValueAtTime(.001,n+d);o.start(n);o.stop(n+d)}catch(e){}}
+function seq(a,d,t){a.forEach(function(f,i){setTimeout(function(){tone(f,d,t)},i*d*900)})}
+var SFX={ok:function(){seq([660,880,1100],.15)},no:function(){seq([220,160],.25,"sawtooth")},tick:function(){tone(1000,.06,"square",.08)},win:function(){seq([523,659,784,1047],.2)},lose:function(){seq([330,294,262],.25)},click:function(){tone(600,.05)}};
+$("snb").onclick=function(){SND=!SND;this.textContent=SND?"🔊":"🔇"};
+function initAudio(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();AC.resume()}catch(e){}}
+
+/* ===== بنك الأسئلة ===== */
+var TF=["صح","خطأ"];
+var MC=[
+["العناصر التي تشكّل المدى الحيوي الجغرافي (Biotope) هي:",["العناصر اللاحية (تربة، ضوء، حرارة...)","الحيوانات فقط","النباتات والحيوانات","الكائنات الدقيقة"],0,"المدى الحيوي الجغرافي يتكوّن من العناصر اللاحية، أما العناصر الحية فتشكّل الوحدة الحياتية (Biocénose)."],
+["الوحدة الحياتية (Biocénose) تتكوّن من:",["حيوانات ونباتات وكائنات دقيقة وإنسان","تربة وماء وهواء فقط","صخور ورمال","ضوء وحرارة"],0,"العناصر الحية كلها تشكّل الوحدة الحياتية."],
+["المعيار الذي نميّز به العناصر الحية عن اللاحية هو:",["القيام بالوظائف الحيوية (تنفس، تغذية، تكاثر)","اللون","الحجم","الحركة فقط"],0,"العناصر الحية تقوم بالوظائف الحيوية، واللاحية لا تقوم بها. والنبات حي رغم أنه لا يتحرك."],
+["الوسط الذي نجد فيه أشجار الصنوبر والأرنب والسرخس هو وسط:",["غابي","مائي","صحراوي","قطبي"],0,"هذه كائنات الوسط الغابي: دبال ورطوبة وحرارة معتدلة."],
+["من العوامل التي تحدد توزع الكائنات الحية في وسطها:",["الرطوبة والإضاءة ودرجة الحرارة وخصائص التربة","لون الكائن الحي","عدد النباتات المزروعة","الضجيج"],0,"العوامل مناخية (رطوبة، إضاءة، حرارة) وخصائص التربة."],
+["الجمل والعقارب والنخيل من كائنات الوسط:",["الصحراوي","المائي","الغابي","القطبي"],0,"الوسط الصحراوي: رمال وحرارة عالية."],
+["علاقة نسر يصطاد سمكة هي علاقة:",["افتراس","تطفل","تعايش","تنافس"],0,"المستفيد هو النسر على حساب السمكة."],
+["نبات الجعفيل عديم اليخضور يستمد غذاءه من نباتات أخرى، وهذه العلاقة:",["تطفل","تعايش","افتراس","تعاون"],0,"المستفيد هو الجعفيل (الطفيلي) على حساب النبات المضيف."],
+["العلاقة بين الفطر والشجرة التي يستفيد منها الطرفان تسمى:",["تعايش","تطفل","افتراس","تنافس"],0,"التعايش منفعة متبادلة بين الطرفين."],
+["الكائنات التي تحلل الجثث والفضلات وتحوّلها إلى مواد معدنية هي:",["الكائنات المحللة","المنتجات","المستهلكات الأولى","المستهلكات الثالثة"],0,"المواد المعدنية الناتجة يستعملها النبات الأخضر لإنتاج المادة العضوية."],
+["المنتج الأولي في السلسلة الغذائية هو دائماً:",["النبات الأخضر","الحيوان العاشب","الحيوان اللاحم","الإنسان"],0,"النبات الأخضر ينتج المادة العضوية."],
+["عندما تتقاطع عدة سلاسل غذائية في نفس الوسط تتشكل:",["شبكة غذائية","سلسلة أطول","وسط جديد","كتلة حية"],0,"تقاطع السلاسل الغذائية يشكّل الشبكة الغذائية."],
+["الكتلة الحية (Biomasse) هي:",["كمية المادة المنتجة في مستوى غذائي معين وزمن معين","عدد الكائنات في الوسط","وزن الإنسان فقط","كمية الماء في الوسط"],0,"هذا هو تعريف الكتلة الحية."],
+["يرافق انتقال المادة من مستوى غذائي إلى آخر ضياع في الكتلة الحية على شكل:",["فضلات وحرارة ونواتج التنفس","ماء فقط","ضوء","أملاح معدنية فقط"],0,"ينتقل 10% فقط والباقي يضيع."]
+];
+var TFQ=[
+["العناصر الحية وحدها هي التي تشكّل المدى الحيوي الجغرافي (Biotope).",1,"المدى الحيوي الجغرافي يتكوّن من العناصر اللاحية."],
+["يتغذى المستهلك الثاني على المستهلك الأول.",0,"المستهلك الثاني يأكل المستهلك الأول فتنتقل إليه المادة."],
+["الأسهم في السلسلة الغذائية تتجه من الحيوان الآكل نحو الحيوان المأكول.",1,"الأسهم تتجه من المأكول نحو الآكل."],
+["الفطر يزيد قدرة جذور الشجرة على امتصاص الماء والأملاح، وتمدّه الشجرة بالمادة العضوية، فهي علاقة تعايش.",0,"منفعة متبادلة بين الفطر والشجرة."],
+["علاقة الدفاع بين أفراد قطيع الأيائل علاقة بين نوعية.",1,"هي علاقة ضمن نوعية لأنها بين أفراد النوع الواحد."],
+["تنتقل كل المادة العضوية من مستوى غذائي إلى المستوى الذي يليه دون ضياع.",1,"ينتقل 10% فقط، والباقي يضيع."],
+["الماء والتربة والحرارة عناصر لاحية.",0,"هذه عناصر لاحية تشكّل المدى الحيوي الجغرافي."]
+];
+var NUM=[
+["نسبة انتقال المادة بين كل مستويين متتاليين 10%. سلسلة: نبات أخضر ← جرادة ← ضفدع ← أفعى. كتلة النبات 2000 kg، فكم تبلغ كتلة الجرادة (kg)؟",200,"2000 × 10% = 200 kg."],
+["نسبة الانتقال 10%. كتلة المنتج 1000 kg، فكم تبلغ كتلة المستهلك الثالث (kg)؟",1,"1000 ← 100 ← 10 ← 1، فالمستهلك الثالث 1 kg."],
+["نسبة الانتقال 10%. كتلة المستهلك الثاني 50 kg، فكم تبلغ كتلة المستهلك الأول الذي يغذّيه (kg)؟",500,"المستهلك الأول = 50 ÷ 10% = 500 kg."],
+["سلسلة: طحالب ← سردين ← تونة ← قرش، ونسبة الانتقال 10%. كتلة الطحالب 5000 kg، فكم تبلغ كتلة القرش (kg)؟",5,"5000 ← 500 ← 50 ← 5، فكتلة القرش 5 kg."],
+["نسبة الانتقال 10%. كتلة المنتج 300 kg، فكم تبلغ كتلة المستهلك الأول (kg)؟",30,"300 × 10% = 30 kg."]
+];
+var ORD=[
+["رتّب حلقات السلسلة من المنتج إلى المستهلك الأخير (اضغط بالترتيب):",["أوراق شجرة البلوط","يرقة اليسروع","القرقف الأزرق","صقر السقاوة"],"السهم يتجه من المأكول إلى الآكل."],
+["رتّب السلسلة الغذائية (اضغط بالترتيب):",["نبات أخضر","جرادة","ضفدع","أفعى"],"منتج ثم مستهلك أول فثانٍ فثالث."],
+["رتّب السلسلة البحرية (اضغط بالترتيب):",["طحالب","سردين","تونة","قرش"],"الطحالب هي المنتج في الوسط المائي."]
+];
+var SV1='<svg viewBox="0 0 320 90"><rect width="320" height="90" fill="#ecfdf5"/><g font-size="22" font-weight="800" text-anchor="middle"><rect x="10" y="12" width="56" height="40" rx="10" fill="#34d399"/><text x="38" y="40" fill="#fff">A</text><rect x="92" y="12" width="56" height="40" rx="10" fill="#60a5fa"/><text x="120" y="40" fill="#fff">B</text><rect x="174" y="12" width="56" height="40" rx="10" fill="#fbbf24"/><text x="202" y="40" fill="#fff">C</text><rect x="256" y="12" width="56" height="40" rx="10" fill="#f87171"/><text x="284" y="40" fill="#fff">D</text></g><g stroke="#f97316" stroke-width="3" fill="none"><path d="M70,32 H88"/><path d="M152,32 H170"/><path d="M234,32 H252"/></g><g font-size="13" font-weight="700" text-anchor="middle" fill="#064e3b"><text x="38" y="72">نبات أخضر</text><text x="120" y="72">جرادة</text><text x="202" y="72">ضفدع</text><text x="284" y="72">أفعى</text></g></svg>';
+var SV2='<svg viewBox="0 0 320 130"><rect width="320" height="130" fill="#fffbeb"/><g font-size="13" font-weight="700" fill="#064e3b"><rect x="20" y="10" width="240" height="20" rx="6" fill="#34d399"/><text x="268" y="25">منتج: 1000 kg</text><rect x="20" y="40" width="120" height="20" rx="6" fill="#60a5fa"/><text x="148" y="55">مستهلك أول: ؟</text><rect x="20" y="70" width="40" height="20" rx="6" fill="#fbbf24"/><text x="68" y="85">مستهلك ثانٍ: 10 kg</text><rect x="20" y="100" width="16" height="20" rx="6" fill="#f87171"/><text x="44" y="115">مستهلك ثالث: 1 kg</text></g></svg>';
+var FIX=[
+{t:"mc",q:"في المخطط، أي حرف يمثل المستهلك الثاني؟",o:["A","B","C","D"],a:2,e:"A منتج، B مستهلك أول (جرادة)، C مستهلك ثانٍ (ضفدع)، D مستهلك ثالث (أفعى).",svg:SV1},
+{t:"mc",q:"يبيّن الرسم الكتلة الحية في كل مستوى غذائي. ما قيمة كتلة المستهلك الأول؟",o:["10 kg","100 kg","500 kg","1000 kg"],a:1,e:"المنتج 1000 kg، والمستهلك الأول 10% منه أي 100 kg.",svg:SV2}
+];
+var Q=[];
+function prep(){
+  var out=[];
+  shuf(MC.slice()).slice(0,9).forEach(function(m){var ix=shuf([0,1,2,3]);out.push({t:"mc",q:m[0],o:ix.map(function(i){return m[1][i]}),a:ix.indexOf(m[2]),e:m[3]})});
+  shuf(TFQ.slice()).slice(0,4).forEach(function(m){out.push({t:"tf",q:m[0],o:TF,a:m[1],e:m[2]})});
+  shuf(NUM.slice()).slice(0,3).forEach(function(m){out.push({t:"num",q:m[0],a:m[1],e:m[2]})});
+  shuf(ORD.slice()).slice(0,2).forEach(function(m){out.push({t:"ord",q:m[0],o:m[1],p:shuf([0,1,2,3]),e:m[2]})});
+  FIX.forEach(function(f){var ix=shuf([0,1,2,3]);out.push({t:"mc",q:f.q,o:ix.map(function(i){return f.o[i]}),a:ix.indexOf(f.a),e:f.e,svg:f.svg})});
+  return shuf(out);
+}
+function check(q,v){
+  if(v===null||v===undefined)return false;
+  if(q.t==="num")return typeof v==="number"&&!isNaN(v)&&Math.abs(v-q.a)<0.001;
+  if(q.t==="ord")return v.length===q.o.length&&v.every(function(x,i){return x===i});
+  return v===q.a;
+}
+function show(id){["s1","s2","s3","s4"].forEach(function(s){$(s).classList.toggle("hide",s!==id)});window.scrollTo(0,0)}
+function A(q,v){
+  if(v===null||v===undefined||(typeof v==="number"&&isNaN(v)))return "لم يُجب (انتهى الوقت)";
+  if(q.t==="num")return fmt(v)+" kg";
+  if(q.t==="ord")return v.map(function(i){return q.o[i]}).join(" ← ");
+  return q.o[v];
+}
+function C(q){
+  if(q.t==="num")return fmt(q.a)+" kg";
+  if(q.t==="ord")return q.o.join(" ← ");
+  return q.o[q.a];
+}
+
+/* ===== سير الكويز ===== */
+function gen(){return SECTION==="3"?"إناث":"ذكور"}
+function pup(){return SECTION==="3"?"التلميذة":"التلميذ"}
+var cur=0,ans=[],name="",good=0,locked=false,SECTION="",KEY="",ADM=false,LET=["أ","ب","ج","د"],TMR=null,T0=0,TL=30;
+$("go").onclick=function(){
+  var l=$("ln").value.trim(),f=$("fn").value.trim(),sc=$("sec").value;
+  if(l.length<2||f.length<2){$("e1").textContent="يرجى كتابة الاسم واللقب كاملين.";return}
+  if(!sc){$("e1").textContent="يرجى اختيار رقم القسم.";return}
+  SECTION=sc;name=l+" "+f;ADM=(l==="ABD-TEST");
+  KEY="zq2_"+hash([l,f].map(norm).sort().join("|")+"|"+SECTION);
+  if(!ADM){try{if(localStorage.getItem(KEY)){$("e1").textContent="⛔ هذا الاسم أنجز الكويز من قبل. المحاولة واحدة فقط.";return}}catch(e){}}
+  initAudio();
+  if(!ADM){try{localStorage.setItem(KEY,"1")}catch(e){}}
+  Q=prep();cur=0;ans=[];good=0;show("s2");render();
+};
+function stopT(){if(TMR){clearInterval(TMR);TMR=null}}
+function startT(){
+  stopT();T0=Date.now();var last=-1;$("tm").classList.remove("lo");
+  TMR=setInterval(function(){
+    var left=Math.max(0,TL-(Date.now()-T0)/1000),sec=Math.ceil(left);
+    $("tb").style.width=(left/TL*100)+"%";$("tt").textContent="⏱ "+sec;
+    if(left<=8)$("tm").classList.add("lo");
+    if(sec!==last&&sec<=5&&sec>0)SFX.tick();
+    last=sec;
+    if(left<=0){stopT();pick(null)}
+  },200);
+}
+function render(){
+  var q=Q[cur];locked=false;
+  $("cnt").textContent="السؤال "+(cur+1)+" / "+Q.length;
+  $("pts").textContent="⭐ "+good;
+  $("pb").style.width=(cur/Q.length*100)+"%";
+  $("q").textContent=q.q;$("fb").innerHTML="";$("nx").classList.add("hide");
+  $("qimg").innerHTML=q.svg||"";
+  var o=$("ops");o.innerHTML="";
+  if(q.t==="mc"||q.t==="tf"){
+    q.o.forEach(function(t,i){
+      var b=document.createElement("button");b.className="opt";
+      b.innerHTML='<span class="l">'+(q.t==="tf"?(i===0?"✔":"✘"):LET[i])+'</span><span></span>';
+      b.lastChild.textContent=t;b.onclick=function(){pick(i)};o.appendChild(b);
+    });
+  }else if(q.t==="num"){
+    var inp=document.createElement("input");inp.type="text";inp.setAttribute("inputmode","decimal");inp.placeholder="اكتب الجواب (kg) ثم اضغط تأكيد";inp.id="numin";
+    var bt=document.createElement("button");bt.className="go g";bt.textContent="✔ تأكيد الجواب";
+    bt.onclick=function(){pick(toNum(inp.value))};
+    inp.onkeydown=function(e){if(e.key==="Enter")bt.onclick()};
+    o.appendChild(inp);o.appendChild(bt);
+  }else{
+    var picked=[],ch=document.createElement("div");ch.className="chosen";o.appendChild(ch);
+    var btns=[];
+    q.p.forEach(function(idx){
+      var b=document.createElement("button");b.className="opt";b.innerHTML="<span class='l' style='background:#059669'>＋</span><span></span>";
+      b.lastChild.textContent=q.o[idx];
+      b.onclick=function(){
+        if(locked||b.classList.contains("used"))return;
+        picked.push(idx);b.classList.add("used");SFX.click();
+        var s=document.createElement("span");s.textContent=picked.length+". "+q.o[idx];ch.appendChild(s);
+        if(picked.length===q.o.length)pick(picked.slice());
+      };
+      btns.push(b);o.appendChild(b);
+    });
+  }
+  $("nx").textContent=cur===Q.length-1?"🏁 عرض النتيجة":"التالي ⬅";
+  startT();
+}
+function pick(v){
+  if(locked)return;locked=true;stopT();
+  var q=Q[cur],right=check(q,v);ans[cur]=v;
+  if(right)good++;
+  (right?SFX.ok:SFX.no)();try{if(!right&&navigator.vibrate)navigator.vibrate(200)}catch(e){}
+  [].forEach.call($("ops").querySelectorAll("button,input"),function(b){b.disabled=true});
+  if(q.t==="mc"||q.t==="tf"){[].forEach.call($("ops").children,function(b,j){if(j===q.a)b.classList.add("ok");else if(j===v)b.classList.add("no")})}
+  $("pts").textContent="⭐ "+good;
+  var timeout=(v===null||(typeof v==="number"&&isNaN(v)));
+  $("fb").innerHTML='<div class="fb '+(right?"ok":"no")+'">'+(right?"🎉 أحسنت! إجابة صحيحة. ":timeout?"⏰ انتهى الوقت! ":"😬 إجابة خاطئة. ")+((q.t==="num"||q.t==="ord")&&!right?"الصحيح: "+C(q)+". ":"")+q.e+'</div>';
+  var c=$("s2");c.classList.remove("shake","pop");void c.offsetWidth;c.classList.add(right?"pop":"shake");
+  $("nx").classList.remove("hide");
+}
+$("nx").onclick=function(){if(cur<Q.length-1){cur++;render()}else finish()};
+
+/* ===== النتيجة والإرسال ===== */
+var report="",lastData={},FIN={};
+function finish(){
+  var ok=good,s=String(ok),total=ok+1;
+  DONE=true;var spent=fmtT(Date.now()-T_LOAD);
+  $("pb").style.width="100%";
+  $("who").textContent=name;
+  $("sc").textContent=ok+" / 20";
+  $("bn").textContent="";
+  var n=ok>=16?3:ok>=10?2:1;$("st").textContent="⭐".repeat(n)+"☆".repeat(3-n);
+  $("msg").textContent=ok+" إجابة صحيحة من 20"+(ok>=16?" – ممتاز، أنت خبير البيئة! 🏆":ok>=10?" – أحسنت، واصل المراجعة 💪":" – راجع الدروس واجتهد أكثر 📚");
+  report="كويز الوسط الحي – علوم الطبيعة والحياة 2 متوسط (الأستاذ عبد العزيز إسماعيل)\n"+pup()+": "+name+"\nالقسم: "+SECTION+" ("+gen()+")\nالكويز: "+ok+" / 20 + نقطة إنجاز (+1) = "+total+"\nالوقت الذي قضاه في الموقع: "+spent+"\n\nتفاصيل الإجابات:";
+  var h="";
+  Q.forEach(function(q,i){
+    var g=check(q,ans[i]);
+    report+="\n"+(i+1)+") "+q.q+"\n   إجابة التلميذ: "+A(q,ans[i])+(g?" ✔":" ✘ (الصحيح: "+C(q)+")");
+    h+='<div class="rv '+(g?"ok":"no")+'"><b>'+(i+1)+". </b><span style='color:inherit'></span><br>"+(g?"✔ ":"✘ إجابتك: <i></i><br>✔ ")+"الصحيح: <u></u><br><span></span></div>";
+  });
+  $("rv").innerHTML=h;
+  [].forEach.call($("rv").children,function(d,i){var q=Q[i];d.querySelector("span").textContent=q.q;var iEl=d.querySelector("i");if(iEl)iEl.textContent=A(q,ans[i]);d.querySelector("u").textContent=C(q);var sp=d.querySelectorAll("span");sp[sp.length-1].textContent=q.e});
+  lastData={"القسم":TITLE+" – قسم "+SECTION+" ("+gen()+")","اللقب والاسم":name,"النتيجة":ok+" / 20 (+1 في التقويم = "+total+") – الوقت في الموقع: "+spent,"الإجابات الصحيحة":ok+" من 20","الإجابات الكاملة":report};
+  show("s3");
+  sendResult();
+  (ok>=10?SFX.win:SFX.lose)();
+  drawCert(ok,total);
+  if(ok>=10){var e=["🎉","⭐","🎊","✨"];for(var k=0;k<28;k++){(function(k){var d=document.createElement("div");d.className="cf";d.textContent=e[k%4];d.style.left=Math.random()*95+"%";d.style.animationDelay=Math.random()*1.5+"s";document.body.appendChild(d);setTimeout(function(){d.remove()},5000)})(k)}}
+}
+function sendResult(){
+  var el=$("snd");el.className="fb";el.style.background="#ecfdf5";el.style.color="#065f46";
+  el.textContent="⏳ جارٍ إرسال الإجابات الكاملة إلى الأستاذ...";$("rt").classList.add("hide");
+  var okf=function(){el.className="fb ok";el.style.background="";el.style.color="";el.textContent="✅ تم إرسال إجاباتك ونتيجتك إلى الأستاذ."};
+  var bad=function(){
+    try{
+      var f=document.createElement("form");f.method="POST";f.action=FORM_URL;f.target="_blank";f.style.display="none";
+      Object.keys(lastData).forEach(function(k){var i=document.createElement("input");i.type="hidden";i.name=k;i.value=lastData[k];f.appendChild(i)});
+      document.body.appendChild(f);f.submit();document.body.removeChild(f);
+      el.className="fb";el.style.background="#fef3c7";el.style.color="#78350f";
+      el.textContent="📨 فُتحت نافذة جديدة لإتمام الإرسال. اضغط زر إعادة الإرسال إن لم تصل الرسالة.";
+    }catch(e){el.className="fb no";el.style.background="";el.style.color="";el.textContent="❌ تعذر الإرسال تلقائياً، اضغط زر إعادة الإرسال."}
+    $("rt").classList.remove("hide");
+  };
+  try{
+    var body=new URLSearchParams();Object.keys(lastData).forEach(function(k){body.append(k,lastData[k])});
+    fetch(FORM_URL,{method:"POST",mode:"no-cors",body:body}).then(function(){okf()}).catch(bad);
+  }catch(e){bad()}
+}
+$("rt").onclick=sendResult;
+
+/* ===== الشهادة ===== */
+function drawCert(ok,total){
+  var c=$("cv"),x=c.getContext("2d"),W=1000,H=700;
+  var tier=ok>=16?["شهادة تميّز","#b45309","🏆"]:ok>=10?["شهادة تشجيع","#047857","⭐"]:["شهادة مثابرة","#0f766e","💪"];
+  var g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,"#f0fdf4");g.addColorStop(1,"#fef9c3");x.fillStyle=g;x.fillRect(0,0,W,H);
+  x.lineWidth=14;x.strokeStyle=tier[1];x.strokeRect(24,24,W-48,H-48);x.lineWidth=3;x.strokeRect(46,46,W-92,H-92);
+  x.direction="rtl";x.textAlign="center";
+  var F="'Segoe UI',Tahoma,'Noto Naskh Arabic',Arial,sans-serif";
+  function t(txt,y,sz,col,wt){x.font=(wt||"700")+" "+sz+"px "+F;x.fillStyle=col;x.fillText(txt,W/2,y)}
+  t(tier[2]+" "+tier[2]+" "+tier[2],120,54,"#000");
+  t(tier[0],195,64,tier[1],"800");
+  t("تُمنح "+(SECTION==="3"?"للتلميذة":"للتلميذ"),262,30,"#4b5563","600");
+  var nm=name,sz=56;x.font="800 "+sz+"px "+F;while(x.measureText(nm).width>800&&sz>26){sz-=3;x.font="800 "+sz+"px "+F}
+  t(nm,340,sz,"#064e3b","800");
+  x.strokeStyle=tier[1];x.lineWidth=2;x.beginPath();x.moveTo(250,362);x.lineTo(750,362);x.stroke();
+  t("القسم "+SECTION+" – على مشاركته المتميزة في كويز الوسط الحي",420,30,"#374151","600");
+  t("علوم الطبيعة والحياة – السنة الثانية متوسط",464,26,"#6b7280","600");
+  t("العلامة: "+ok+" / 20",545,56,tier[1],"800");
+  x.save();x.translate(815,150);x.rotate(0.14);
+  x.fillStyle="#f97316";x.strokeStyle="#fff";x.lineWidth=5;
+  var bw=240,bh=66,br=18,bx=-bw/2,by=-bh/2;
+  x.beginPath();x.moveTo(bx+br,by);x.lineTo(bx+bw-br,by);x.arcTo(bx+bw,by,bx+bw,by+br,br);x.lineTo(bx+bw,by+bh-br);x.arcTo(bx+bw,by+bh,bx+bw-br,by+bh,br);x.lineTo(bx+br,by+bh);x.arcTo(bx,by+bh,bx,by+bh-br,br);x.lineTo(bx,by+br);x.arcTo(bx,by,bx+br,by,br);x.closePath();x.fill();x.stroke();
+  x.fillStyle="#fff";x.textAlign="center";x.font="800 32px "+F;x.fillText("⭐ +1 في التقويم",0,12);
+  x.restore();x.textAlign="center";
+  var d="";try{d=new Date().toLocaleDateString("ar-DZ")}catch(e){}
+  x.textAlign="right";x.font="600 24px "+F;x.fillStyle="#6b7280";x.fillText(d,W-90,625);
+  x.textAlign="left";x.fillStyle="#1f2937";x.fillText("الأستاذ: عبد العزيز إسماعيل",90,625);
+}
+$("cs").onclick=function(){
+  try{var a=document.createElement("a");a.href=$("cv").toDataURL("image/png");a.download="certificate.png";document.body.appendChild(a);a.click();document.body.removeChild(a)}catch(e){}
+};
+
+/* ===== المراجعة الشاملة ===== */
+var LS=[
+{n:"1 الوسط الحي",c:["#059669,#0d9488","#16a34a,#65a30d","#0284c7,#0d9488","#7c3aed,#4f46e5"],
+ k:[["🌍","الوسط الحي","مجموعة عناصر حية ولاحية في مدى جغرافي، تتميز بالانسجام والاستقرار الطبيعي."],
+    ["🌿","العناصر الحية (Biocénose)","حيوانات، نباتات، كائنات حية دقيقة، إنسان. تشكّل الوحدة الحياتية."],
+    ["🪨","العناصر اللاحية (Biotope)","تربة، ماء، هواء، ضوء، حرارة، صخور. تشكّل المدى الحيوي الجغرافي."],
+    ["🔍","معيار التمييز","العناصر الحية تقوم بالوظائف الحيوية (تنفس، تغذية، تكاثر) واللاحية لا تقوم بها."]],
+ s:"الوسط الحي = وحدة حياتية (عناصر حية) + مدى حيوي جغرافي (عناصر لاحية)."},
+{n:"2 أنواع الأوساط",c:["#15803d,#65a30d","#0369a1,#0891b2","#d97706,#ea580c","#7c3aed,#c026d3"],
+ k:[["🌲","الوسط الغابي","أشجار الصنوبر، أرنب، سرخس، حشائش، طيور. دبال ورطوبة وحرارة معتدلة."],
+    ["🌊","الوسط المائي","أسماك، حوت، أخطبوط، طحالب. ماء وصخور (بحار، وديان...)."],
+    ["🏜️","الوسط الصحراوي","جمال، عقارب، نخيل، فنك. رمال وحرارة عالية."],
+    ["🌡️","عوامل التوزع","عوامل مناخية (رطوبة، إضاءة، حرارة) وخصائص التربة تحدد توزع الكائنات."]],
+ s:"لكل وسط وحدة حياتية خاصة به، وتنقسم الأوساط إلى برية ومائية."},
+{n:"3 العلاقات",c:["#ea580c,#dc2626","#0d9488,#16a34a","#b91c1c,#be123c","#a16207,#65a30d","#7c3aed,#4f46e5"],
+ k:[["🤝","علاقات ضمن نوعية","بين أفراد النوع الواحد: تكاثر، دفاع، حماية."],
+    ["🔀","علاقات بين نوعية","بين أنواع مختلفة: افتراس، تطفل، تعايش، تنافس."],
+    ["🦅","الافتراس","نسر يصطاد سمكة: يستفيد النسر على حساب السمكة."],
+    ["🌱","التطفل","الجعفيل على اللبلاب: يستفيد الطفيلي على حساب النبات المضيف."],
+    ["🍄","التعايش","الفطر والشجرة: منفعة متبادلة بين الطرفين."]],
+ s:"الكائنات الحية في وسطها مرتبطة فيما بينها: ضمن النوع الواحد أو بين أنواع مختلفة."},
+{n:"4 السلاسل الغذائية",c:["#059669,#65a30d","#16a34a,#0d9488","#d97706,#b45309","#78350f,#a16207","#7c3aed,#4f46e5"],
+ k:[["⛓️","السلسلة الغذائية","كائنات تربطها علاقة غذائية. السهم يتجه من المأكول نحو الآكل."],
+    ["🌳","المنتج","النبات الأخضر ينتج المادة العضوية: منتج أولي."],
+    ["🐛","المستهلكات","مستهلك أول (عاشب)، مستهلك ثانٍ، مستهلك ثالث (لواحم)."],
+    ["🍂","المحللات","تحلل الجثث والفضلات وتحوّلها إلى مواد معدنية يستعملها النبات الأخضر."],
+    ["🕸️","الشبكة الغذائية","تقاطع عدة سلاسل غذائية في نفس الوسط."]],
+ s:"المستويات الغذائية: منتجة، مستهلكة، محلِّلة.",
+ x:'<div class="chain"><span>🌳<small>منتج أولي</small></span><b>➜</b><span>🐛<small>مستهلك أول</small></span><b>➜</b><span>🐦<small>مستهلك ثانٍ</small></span><b>➜</b><span>🦅<small>مستهلك ثالث</small></span></div>'},
+{n:"5 انتقال المادة",c:["#dc2626,#ea580c","#7c3aed,#4f46e5","#0d9488,#16a34a","#d97706,#b45309"],
+ k:[["📉","نسبة 10%","ينتقل 10% فقط من المادة العضوية من مستوى غذائي إلى المستوى الذي يليه."],
+    ["🔥","الضياع","الباقي (90%) يضيع في شكل فضلات وحرارة ونواتج التنفس."],
+    ["⚖️","الكتلة الحية (Biomasse)","كمية المادة المنتجة في مستوى غذائي معين وزمن معين."],
+    ["🧮","مثال","1000 kg نبات ← 100 kg جراد ← 10 kg ضفدع ← 1 kg أفعى."]],
+ s:"كلما ارتفعنا في السلسلة الغذائية تناقصت الكتلة الحية.",
+ x:'<div class="qt" style="margin-top:10px">🧮 جرّب حساب الكتلة الحية</div><label>كتلة المنتج (kg)</label><input id="cin" type="text" inputmode="decimal" value="1000"><div id="cres"></div>'}
+];
+var lsI=0;
+function lesson(i){
+  lsI=i;var L=LS[i];
+  [].forEach.call($("tabs").children,function(b,j){b.classList.toggle("on",j===i)});
+  var h='<div class="cg" id="cgg"></div><div class="sum"></div>'+(L.x||"");
+  $("lsn").innerHTML=h;
+  $("lsn").querySelector(".sum").textContent="📌 "+L.s;
+  var g=$("cgg");
+  L.k.forEach(function(c,j){
+    var d=document.createElement("div");d.className="fc";
+    d.innerHTML="<div class='fi'><div class='ff' style='background:linear-gradient(135deg,"+L.c[j%L.c.length]+")'><span class='em'></span><span class='tt'></span><small>اضغط للقلب 🔄</small></div><div class='fk'><b></b><span></span></div></div>";
+    d.querySelector(".em").textContent=c[0];d.querySelector(".tt").textContent=c[1];d.querySelector(".fk b").textContent=c[1];d.querySelector(".fk span").textContent=c[2];
+    d.querySelector(".ff").style.animationDelay=(j*.25)+"s";
+    d.onclick=function(){d.classList.toggle("f");SFX.click()};
+    g.appendChild(d);
+  });
+  if(i===4){$("cin").oninput=calc;calc()}
+}
+function calc(){
+  var m=toNum($("cin").value);if(isNaN(m)||m<0)m=0;
+  var rows=[["🌱 منتج",m,100],["🦗 مستهلك أول",m*.1,60],["🐸 مستهلك ثانٍ",m*.01,34],["🐍 مستهلك ثالث",m*.001,16]];
+  $("cres").innerHTML="";
+  rows.forEach(function(r){
+    var d=document.createElement("div");d.className="bm";d.innerHTML="<em></em><div></div>";
+    d.firstChild.textContent=r[0];d.lastChild.style.width=r[2]+"%";d.lastChild.textContent=fmt(r[1])+" kg";
+    $("cres").appendChild(d);
+  });
+  var n=document.createElement("div");n.className="mut";n.textContent="في كل انتقال: الكتلة × 10% (÷ 10)، والباقي يضيع.";$("cres").appendChild(n);
+}
+function openRv(){
+  initAudio();
+  if(!$("tabs").children.length){LS.forEach(function(L,i){var b=document.createElement("button");b.textContent=L.n;b.onclick=function(){SFX.click();lesson(i)};$("tabs").appendChild(b)})}
+  lesson(lsI);show("s4");SFX.click();
+  $("rvgo").textContent=DONE?"↩ العودة إلى نتيجتي":"🎯 أنا جاهز، أريد الاختبار";
+}
+$("rvb").onclick=openRv;$("rvb2").onclick=openRv;
+$("rvgo").onclick=function(){show(DONE?"s3":"s1")};
+</script>
+</body>
+</html>
